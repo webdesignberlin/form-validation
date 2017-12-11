@@ -1,0 +1,28 @@
+import validateName from './validate-name.js';
+import validateEmail from './validate-email.js';
+import validateGender from './validate-gender.js';
+import validateUuid from './validate-uuid.js';
+import validateState from './validate-state.js';
+// import validateBirthdate from './validate-birthdate';
+import validatePhone from './validate-phone.js';
+
+/**
+ * Validator Object with Validation functions
+ * @namespace
+ * @type {{firstName: validateName, lastName: validateName,
+ * birthdate: validateBirthdate, phone: validatePhone,
+ * email: validateEmail, gender: validateGender,
+ * uuid: validateUuid, state: validateState}}
+ */
+const Validator = {
+  firstName: validateName,
+  lastName: validateName,
+  // birthdate: validateBirthdate,
+  phone: validatePhone,
+  email: validateEmail,
+  gender: validateGender,
+  uuid: validateUuid,
+  state: validateState,
+};
+
+export default Validator;

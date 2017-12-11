@@ -2,7 +2,25 @@ import { Form } from './form.js';
 
 function translate(value) {
   const catalog = {
-    nameValueNotMatched: 'Name so nicht okay',
+    nameLengthIsIncorrect: 'Leerzeichen sind nicht möglich',
+    nameIsRequired: 'Pflichtfeld',
+    nameValueNotMatched: 'darf keine Sonderzeichen enthalten',
+
+    birthdateMinAge: 'Mindestalter 15 Jahre',
+    birthdateIsRequired: 'Pflichtfeld',
+    birthdateIsInvalid: 'hat ein falsches Format (DD-MM-YYYY)',
+
+    genderIsRequired: 'Pflichtfeld',
+    genderIsInvalid: 'Fehlerhafte Eingabe. Geschlecht erwartet "FEMALE" oder "MALE"',
+
+    stateIsRequired: 'muss naktiviert sein',
+    stateIsNotTrue: 'muss bestätigt werden',
+
+    emailIsRequired: 'Pflichtfeld',
+    emailWrongPattern: 'Bitte gib eine gültige E-Mail-Adresse an.',
+
+    phoneIsRequired: 'Pflichtfeld',
+    phoneWrongPattern: 'Bitte gib eine gültige Teefonnummer an.',
   };
 
   function getTranslation(key) {

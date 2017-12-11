@@ -121,12 +121,11 @@ export class Form {
     }
 
     const validationEvent = new CustomEvent('form-validation', {
-      detail: {
+      detail: Object.assign(this.getErrorObject(field), {
         fieldIsValid: this.fieldIsValid(field),
         form: this.elForm,
         currentField: field,
-        object: this.getErrorObject(field),
-      }
+      })
     });
 
     document.dispatchEvent(validationEvent);

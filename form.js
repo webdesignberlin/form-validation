@@ -1,5 +1,13 @@
 import Validator from './rules/index.js';
 
+const options = {
+  classHasError: 'has-error',
+  classIsFine: 'is-fine',
+  ignoreField: 'ignore',
+  classSubmitDisabled: 'is-disabled',
+  initialValidate: false,
+};
+
 export class Form {
   /**
    * Creates a new Form Handler
@@ -11,14 +19,9 @@ export class Form {
    */
   constructor(form, config) {
     this.elForm = form;
-    this.config = config || {
-      classHasError: 'has-error',
-      classIsFine: 'is-fine',
-      ignoreField: 'ignore',
-      classSubmitDisabled: 'is-disabled',
-    };
+    this.config = Object.assign(options, config);
     this.fields = this.getFieldsToValidate();
-    // this.init();
+    this.init();
   }
 
   /**
@@ -27,7 +30,10 @@ export class Form {
    * @memberOf Form
    */
   init() {
-    console.log('init', this.fields);
+    console.log(this.config);
+    if (this.config.initialValidate) {
+      this.validateAll()
+    }
   }
 
   /**

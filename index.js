@@ -2,7 +2,6 @@ import { Form } from './form.js';
 
 const form1 = document.getElementById('form-1');
 const formHandling = new Form(form1);
-formHandling.init();
 
 /* for(const field of formHandling.getFieldsToValidate()) {
   formHandling.validate(field);

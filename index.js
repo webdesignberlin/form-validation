@@ -1,9 +1,24 @@
 import { Form } from './form.js';
 
+function translate(value) {
+  const catalog = {
+    nameValueNotMatched: 'Name so nicht okay',
+  };
+
+  function getTranslation(key) {
+    return catalog[key] || key;
+  }
+
+  return getTranslation(value);
+}
+
 const form1 = document.getElementById('form-1');
 const formHandling = new Form(form1);
 
-document.addEventListener('form-validation', function (e) { console.log(e.detail) });
+document.addEventListener('form-validation', function (e) { 
+  displayErrorMessage(e.detail.currentField, e.detail.message)
+  console.log(e.detail);
+});
 
 /* for(const field of formHandling.getFieldsToValidate()) {
   formHandling.validate(field);
@@ -42,6 +57,18 @@ function handleInputKeyDown(event) {
     }
   }
 }
+
+function displayErrorMessage(target, message = null) {
+  const errorElement = `<span class="error-message">${translate(message)}</span>`;
+  const element = target;
+
+  if (element.querySelectorAll('.error-message').length === 0) {
+    element.insertAdjacentHTML('afterend', errorElement);
+  } else {
+    element.querySelector('.error-message').innerText = message;
+  }
+}
+
 
 /**
  * Handle Form Input Events

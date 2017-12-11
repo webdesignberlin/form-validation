@@ -3,6 +3,8 @@ import { Form } from './form.js';
 const form1 = document.getElementById('form-1');
 const formHandling = new Form(form1);
 
+document.addEventListener('form-validation', function (e) { console.log(e.detail) });
+
 /* for(const field of formHandling.getFieldsToValidate()) {
   formHandling.validate(field);
 } */

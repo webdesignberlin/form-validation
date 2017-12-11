@@ -51,7 +51,29 @@ export class Form {
    * @memberof Form
    */ 
   getFieldsToValidate() {
-    return this.elForm.querySelectorAll(`input:not(.${this.options.classIgnore})`);
+    return this.elForm.querySelectorAll(`input:not(.${this.config.classIgnore})`);
+  }
+
+  /**
+   * Get Validation Message
+   * @param {HTMLElement} field
+   * @returns {string}
+   * @memberof Form
+   */
+  getErrorMessage(field) {
+    const validatorRule = field.dataset.validator;
+    return Validator[validatorRule](field.value).message;
+  }
+
+  /**
+   * Get Validation Object
+   * @param {HTMLElement} field
+   * @returns {object}
+   * @memberof Form
+   */
+  getErrorObject(field) {
+    const validatorRule = field.dataset.validator;
+    return Validator[validatorRule](field.value);
   }
 
   /**
@@ -97,6 +119,17 @@ export class Form {
     } else {
       this.handleInvalidField(field);
     }
+
+    const validationEvent = new CustomEvent('form-validation', {
+      detail: {
+        fieldIsValid: this.fieldIsValid(field),
+        form: this.elForm,
+        currentField: field,
+        object: this.getErrorObject(field),
+      }
+    });
+
+    document.dispatchEvent(validationEvent);
   }
 
   /**

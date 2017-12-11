@@ -15,10 +15,9 @@ formHandling.init();
  */
 function handleFocusonValid(currentField, inputs) {
   for (let [index, element] of inputs.entries()) {
-    if (element === currentField) {
-      // inputs[index + 1].focus();
+    if (element === currentField && index < inputs.length) {
       inputs[index + 1].focus();
-      inputs[index + 1].select();
+      // inputs[index + 1].select();
     }
   }
 }
@@ -33,8 +32,8 @@ function handleInputKeyDown(event) {
   const inputs = [...form.querySelectorAll('input, select')];
   // listen on enter/return key
   if (event.keyCode === 13) {
+    event.preventDefault();
     if (!formHandling.fieldIsValid(field)) {
-      event.preventDefault();
       field.focus();
     } else {
       // focus next element for ux on ios

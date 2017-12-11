@@ -1,7 +1,7 @@
 import { Form } from './form.js';
 
-function translate(value) {
-  const catalog = {
+async function translate(value) {
+  /* const catalog = {
     nameLengthIsIncorrect: 'Leerzeichen sind nicht möglich',
     nameIsRequired: 'Pflichtfeld',
     nameValueNotMatched: 'darf keine Sonderzeichen enthalten',
@@ -21,10 +21,26 @@ function translate(value) {
 
     phoneIsRequired: 'Pflichtfeld',
     phoneWrongPattern: 'Bitte gib eine gültige Teefonnummer an.',
-  };
+  }; */
 
-  function getTranslation(key) {
+  /* function getTranslation(key) {
     return catalog[key] || key;
+  } */
+
+  async function getTranslation(key) {
+    try {
+
+      // Getting data
+      let data = await fetch('validation-messages.json');
+
+      // Parsing data
+      let parsedData = await data.json();
+
+      return parsedData[key] || key;
+
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return getTranslation(value);
@@ -76,8 +92,8 @@ function handleInputKeyDown(event) {
   }
 }
 
-function displayErrorMessage(target, message = null) {
-  const errorElement = `<span class="error-message">${translate(message)}</span>`;
+async function displayErrorMessage(target, message = null) {
+  const errorElement = `<span class="error-message">${await translate(message)}</span>`;
   const element = target;
 
   if (element.querySelectorAll('.error-message').length === 0) {

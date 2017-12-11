@@ -1,9 +1,18 @@
 import Validator from './rules/index.js';
 
+/**
+ * Options Object of Form
+ * @type {object}
+ * @property {string} classHasError - Class to Display on Error
+ * @property {string} classIsFine - Class to Display on Success
+ * @property {string} classIgnore - Class of fields which dont be validate
+ * @property {string} classSubmitDisabled - Class for disabled Buttons
+ * @property {boolean} initialValidate - True if Form Validation on init
+ */
 const options = {
   classHasError: 'has-error',
   classIsFine: 'is-fine',
-  ignoreField: 'ignore',
+  classIgnore: 'ignore',
   classSubmitDisabled: 'is-disabled',
   initialValidate: false,
 };
@@ -15,7 +24,7 @@ export class Form {
    * @param {HTMLElement} form - Form Dom Node.
    * @param {HTMLElement|NodeList|Array} fields
    * @param {HTMLElement|NodeList|Array} submitBtns
-   * @param {Object} config
+   * @param {configOptions|Object} config
    */
   constructor(form, config) {
     this.elForm = form;
@@ -27,7 +36,7 @@ export class Form {
   /**
    * Init Function
    * @function
-   * @memberOf Form
+   * @memberof Form
    */
   init() {
     console.log(this.config);
@@ -39,16 +48,16 @@ export class Form {
   /**
    * Get Field to Validate
    * @function
-   * @memberOf Form
-   */
+   * @memberof Form
+   */ 
   getFieldsToValidate() {
-    return this.elForm.querySelectorAll('input:not(.ignore)');
+    return this.elForm.querySelectorAll(`input:not(.${this.options.classIgnore})`);
   }
 
   /**
    * Single Field Validation
    * @function
-   * @memberOf Form
+   * @memberof Form
    * @param {HTMLElement} field - Dom Element to validate
    * @returns {boolean}
    */
@@ -60,7 +69,7 @@ export class Form {
   /**
    * Hanlde Invalid Fields
    * @function
-   * @memberOf Form
+   * @memberof Form
    */
   handleInvalidField(field) {
     field.classList.remove(this.config.classIsFine);
@@ -70,7 +79,7 @@ export class Form {
   /**
    * Hanlde Valid Fields
    * @function
-   * @memberOf Form
+   * @memberof Form
    */
   handleValidField(field) {
     field.classList.remove(this.config.classHasError);
@@ -80,7 +89,7 @@ export class Form {
   /**
    * Field Validation
    * @function
-   * @memberOf Form
+   * @memberof Form
    */
   validate(field) {
     if (this.fieldIsValid(field)) {
@@ -93,7 +102,7 @@ export class Form {
   /**
    * Validation for all Fields
    * @function
-   * @memberOf Form
+   * @memberof Form
    */
   validateAll() {
     for (const field of this.fields) {

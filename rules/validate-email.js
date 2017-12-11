@@ -11,7 +11,7 @@ const message = new Messages();
  */
 export default function validateEmail(mail) {
   if (!mail) {
-    return message.info(message.defaultMessages.emailIsRequired, '', is.INVALID);
+    return message.info('emailIsRequired', '', is.INVALID);
   }
 
   const emailreg = mail.match(/^[-a-z0-9~!$%^&*_=+}{'?]+(\.[-a-z0-9~!$%^&*_=+}{'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i);
@@ -19,5 +19,5 @@ export default function validateEmail(mail) {
     return message.info('', '', is.VALID);
   }
 
-  return message.info(message.defaultMessages.emailWrongPattern, mail, is.INVALID);
+  return message.info('emailWrongPattern', mail, is.INVALID);
 }

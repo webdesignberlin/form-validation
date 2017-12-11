@@ -11,12 +11,12 @@ const messages = new Messages();
  */
 export default function validateState(value) {
   if (!value) {
-    return messages.info(messages.defaultMessages.stateIsRequired, '', is.INVALID);
+    return messages.info('stateIsRequired', '', is.INVALID);
   }
 
   if (value === 'true' || (typeof value === 'boolean' && true)) {
     return messages.info('', '', is.VALID);
   }
 
-  return messages.info(messages.defaultMessages.stateIsNotTrue, value, is.INVALID);
+  return messages.info('stateIsNotTrue', value, is.INVALID);
 }

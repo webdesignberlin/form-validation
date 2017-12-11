@@ -31,7 +31,7 @@ const validateAge = (birthdate) => {
   if (yearDifference >= MIN_AGE) {
     return message.info('', '', is.VALID);
   }
-  return message.info(message.defaultMessages.birthdateMinAge, yearDifference, is.INVALID);
+  return message.info('birthdateMinAge', yearDifference, is.INVALID);
 };
 
 /**
@@ -42,11 +42,11 @@ const validateAge = (birthdate) => {
  */
 export default function validateBirthdate(birthdate) {
   if (!birthdate) {
-    return message.info(message.defaultMessages.birthdateIsRequired, '', is.INVALID);
+    return message.info('birthdateIsRequired', '', is.INVALID);
   }
 
   if (moment(birthdate, 'DD-MM-YYYY').isValid()) {
     return validateAge(birthdate);
   }
-  return message.info(message.defaultMessages.birthdateIsInvalid, birthdate, is.INVALID);
+  return message.info('birthdateIsInvalid', birthdate, is.INVALID);
 }

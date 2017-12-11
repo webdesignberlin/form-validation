@@ -11,15 +11,15 @@ const messages = new Messages();
  */
 export default function validatePhone(phone) {
   if (!phone) {
-    return messages.info(messages.defaultMessages.phoneIsRequired, '', is.INVALID);
+    return messages.info('phoneIsRequired', '', is.INVALID);
   }
 
   if (typeof phone !== 'string') {
-    return messages.info(messages.defaultMessages.phoneWrongPattern, phone, is.INVALID);
+    return messages.info('phoneWrongPattern', phone, is.INVALID);
   }
 
   if (!phone.trim().match(/^(\+|)[0-9 ]+$/)) {
-    return messages.info(messages.defaultMessages.phoneWrongPattern, phone, is.INVALID);
+    return messages.info('phoneWrongPattern', phone, is.INVALID);
   }
 
   return messages.info('', '', is.VALID);

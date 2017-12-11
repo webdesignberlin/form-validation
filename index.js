@@ -29,15 +29,10 @@ async function translate(value) {
 
   async function getTranslation(key) {
     try {
-
-      // Getting data
       let data = await fetch('validation-messages.json');
-
-      // Parsing data
       let parsedData = await data.json();
 
       return parsedData[key] || key;
-
     } catch (error) {
       console.log(error);
     }

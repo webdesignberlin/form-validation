@@ -5,31 +5,6 @@ export default class Messages {
    */
   constructor() {
     this.errorObj = {};
-    this.defaultMessages = {
-      nameIsRequired: 'nameIsRequired',
-      nameLengthIsIncorrect: 'nameLengthIsIncorrect',
-      nameValueNotMatched: 'nameValueNotMatched',
-
-      birthdateMinAge: 'birthdateMinAge',
-      birthdateIsRequired: 'birthdateIsRequired',
-      birthdateIsInvalid: 'birthdateIsInvalid',
-
-      genderIsRequired: 'genderIsRequired',
-      genderIsInvalid: 'genderIsInvalid',
-
-      uuidIsRequired: 'uuidIsRequired',
-      uuidWrongType: 'uuidWrongType',
-      uuidWrongPattern: 'uuidWrongPattern',
-
-      stateIsRequired: 'stateIsRequired',
-      stateIsNotTrue: 'stateIsNotTrue',
-
-      emailIsRequired: 'emailIsRequired',
-      emailWrongPattern: 'emailWrongPattern',
-
-      phoneIsRequired: 'phoneIsRequired',
-      phoneWrongPattern: 'phoneWrongPattern',
-    };
   }
 
   /**

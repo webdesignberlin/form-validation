@@ -11,11 +11,11 @@ const message = new Messages();
  */
 export default function validateGender(gender) {
   if (!gender) {
-    return message.info(message.defaultMessages.genderIsRequired, '', is.INVALID);
+    return message.info('genderIsRequired', '', is.INVALID);
   }
 
   if (gender === 'FEMALE' || gender === 'MALE') {
     return message.info('', '', is.VALID);
   }
-  return message.info(message.defaultMessages.genderIsInvalid, gender, is.INVALID);
+  return message.info('genderIsInvalid', gender, is.INVALID);
 }

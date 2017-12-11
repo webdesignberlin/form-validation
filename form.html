@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Form Validation</title>
+  </head>
+  <body>
+    <style>
+      .is-fine { border: 1px solid green; } 
+      .has-error { border: 1px solid red; } 
+    </style>
+    <form id="form-1">
+      <input type="text" value="micha" id="user" placeholder="First Name" data-validator="firstName">
+      <input type="text" value="Frank" id="last-name" placeholder="Last Name" data-validator="lastName">
+      <input type="text" class="ignore" id="ignore" placeholder="Dont validate please">
+      <select>
+        <option></option>
+        <option>Option 1</option>
+      </select>
+      <button class="js-submit">Ab gehts</button>
+    </form>
+
+    <form id="form-2">
+      <input type="text" id="user-2" placeholder="User 2">
+      <input type="text" id="city-2" placeholder="City 2">
+    </form>
+  </body>
+  <script src="index.js" type="module"></script>
+</html>

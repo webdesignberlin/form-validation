@@ -6,17 +6,497 @@
     <style>
       .is-fine { border: 1px solid green; } 
       .has-error { border: 1px solid red; } 
+
+      .form {
+        margin: 1rem;
+      }
+
+      .form--1 label {
+        display: block;
+        padding-top: 0.4rem;
+        margin-bottom: 1.4rem;
+        cursor: pointer;
+      }
     </style>
-    <form id="form-1">
-      <input type="text" id="user" placeholder="Maxi" data-validator="firstName">
-      <input type="text" id="last-name" placeholder="Musterfrau" data-validator="lastName">
-      <input type="text" class="ignore" id="ignore" placeholder="Dont validate please">
-      <input type="text" id="phone" placeholder="+49 30 3432622-113" data-validator="phone">
-      <input type="text" id="user-firstname" placeholder="Max" data-validator="firstName">
-      <select>
-        <option></option>
-        <option>Option 1</option>
-      </select>
+
+    <form id="form-1" class="form form--1">
+      <input type="text" id="first-name" placeholder="Maxi" data-validator="firstName">
+      <label for="first-name">Vorname</label>
+
+      <input type="text" id="last-name" placeholder="Musterfrau" data-validator="lastName" required>
+      <label for="last-name">Nachname</label>
+
+      <input type="text" class="ignore" id="ignore" placeholder="something like !-..5">
+      <label for="ignore">Dont validate please</label>
+
+      <input type="tel" id="phone" placeholder="+49 30 3432622-113" data-validator="phone">
+      <label for="phone">Telefon</label>
+
+      <input type="email" id="email" placeholder="maxi@musterfrau.de" data-validator="email">
+      <label for="email">E-Mail</label>
+
+      <label for="checkbox">
+        <input type="checkbox" id="checkbox" required data-validator="state" value="false">
+        Radio Button
+      </label>
+
+      <label for="select">
+        <select id="select">
+          <option></option>
+          <option>Option 1</option>
+        </select>
+         Auswahl Select
+      </label>
+      
+      <p><button class="js-submit">Ab gehts</button></p>
+    </form>
+
+    <form id="native-form">
+      <ul>
+        <li>
+          <input autofocus>
+        </li>
+        <li>
+          <input autofocus disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input autofocus&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input>
+        </li>
+        <li>
+          <input disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <form>
+            <input required>
+            <input type=submit>
+          </form>
+        </li>
+        <li>
+          <form>
+            <input required disabled>
+            <input type=submit disabled>
+          </form>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input required&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=text>
+        </li>
+        <li>
+          <input type=text disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=text&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <textarea></textarea>
+        </li>
+        <li>
+          <textarea disabled></textarea>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;textarea&gt;&lt;/textarea&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=password placeholder=password>
+        </li>
+        <li>
+          <input type=password placeholder=password disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=password placeholder=password&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=radio>
+        </li>
+        <li>
+          <input type=radio disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=radio&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=radio checked>
+        </li>
+        <li>
+          <input type=radio checked disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=radio checked&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=checkbox>
+        </li>
+        <li>
+          <input type=checkbox disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=checkbox&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=checkbox checked>
+        </li>
+        <li>
+          <input type=checkbox checked disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=checkbox checked&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <select>
+            <option></option>
+            <option>Option 1</option>
+          </select>
+        </li>
+        <li>
+          <select disabled>
+            <option></option>
+            <option>Option 1</option>
+          </select>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">
+      &lt;select&gt;
+        &lt;option&gt;&lt;/option&gt;
+      &lt;/select&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <select>
+            <optgroup label="Option group 1">
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </optgroup>
+            <optgroup>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </li>
+        <li>
+          <select disabled>
+            <optgroup label="Option group 1">
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </optgroup>
+            <optgroup>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">
+      &lt;select&gt;
+        &lt;optgroup label="Option group 1"&gt;
+          &lt;option&gt;Option 1&lt;/option&gt;
+          &lt;option&gt;Option 2&lt;/option&gt;
+        &lt;/optgroup&gt;
+        &lt;optgroup>
+          &lt;option&gt;Option 3&lt;/option&gt;
+        &lt;/optgroup&gt;
+      &lt;/select&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=text placeholder=placeholder>
+        </li>
+        <li>
+          <input type=text placeholder=placeholder disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=text placeholder=placeholder&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=search>
+        </li>
+        <li>
+          <input type=search disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=search&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=file>
+        </li>
+        <li>
+          <input type=file disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=file&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <fieldset>
+            <legend>Legend</legend>
+            <label for=field>Label</label>
+            <input id=field>
+          </fieldset>
+        </li>
+        <li>
+          <fieldset disabled>
+            <legend>Legend</legend>
+            <label for=field-disabled>Label</label>
+            <input id=field-disabled>
+          </fieldset>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">
+      &lt;fieldset&gt;
+        &lt;legend>Legend&lt;/legend&gt;
+        &lt;label for=field&gt;Label&lt;/label&gt;
+        &lt;input id=field&gt;
+      &lt;/fieldset&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=submit>
+        </li>
+        <li>
+          <input type=submit disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=submit&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <button>Button</button>
+        </li>
+        <li>
+          <button disabled>Button</button>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;button&gt;Button&lt;/button&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=reset>
+        </li>
+        <li>
+          <input type=reset disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=reset&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=email>
+        </li>
+        <li>
+          <input type=email disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=email&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=tel>
+        </li>
+        <li>
+          <input type=tel disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=tel&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=url>
+        </li>
+        <li>
+          <input type=url disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=url&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=number>
+        </li>
+        <li>
+          <input type=number disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=number&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=number min=0 max=15 step=3>
+        </li>
+        <li>
+          <input type=number min=0 max=15 step=3 disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=number min=0 max=15 step=3&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=range>
+        </li>
+        <li>
+          <input type=range disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=range&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=range min=0 max=15 step=3>
+        </li>
+        <li>
+          <input type=range min=0 max=15 step=3 disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=range min=0 max=15 step=3&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=date>
+        </li>
+        <li>
+          <input type=date disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=date&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=month>
+        </li>
+        <li>
+          <input type=month disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=month&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=week>
+        </li>
+        <li>
+          <input type=week disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=week&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=time>
+        </li>
+        <li>
+          <input type=time disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=time&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=datetime>
+        </li>
+        <li>
+          <input type=datetime disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=datetime&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=datetime-local>
+        </li>
+        <li>
+          <input type=datetime-local disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=datetime-local&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=color>
+        </li>
+        <li>
+          <input type=color disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=color&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type=color value="#ff3d3d">
+        </li>
+        <li>
+          <input type=color value="#ff3d3d" disabled>
+        </li>
+        <li>
+          <pre><code class="markup language-markup">&lt;input type=color value="#ff3d3d"&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li class="progress-element">
+          <progress max="100" value="50"></progress>
+        </li>
+        <li>&nbsp;</li>
+        <li>
+          <pre><code class="markup language-markup">&lt;progress max="100" value="<span class="progress-progress">50</span>"&gt;&lt;/progress&gt;</code></pre>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <progress></progress>
+        </li>
+        <li>&nbsp;</li>
+        <li>
+          <pre><code class="markup language-markup">&lt;progress&gt;&lt;/progress&gt;</code></pre>
+        </li>
+      </ul>
       <button class="js-submit">Ab gehts</button>
     </form>
 

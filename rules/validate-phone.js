@@ -1,7 +1,5 @@
-import Messages from './messages.js';
+import { info } from './messages.js';
 import is from './valid-object.js';
-
-const messages = new Messages();
 
 /**
  * Phone Validation
@@ -11,16 +9,16 @@ const messages = new Messages();
  */
 export default function validatePhone(phone) {
   if (!phone) {
-    return messages.info('phoneIsRequired', '', is.INVALID);
+    return info('phoneIsRequired', '', is.INVALID);
   }
 
   if (typeof phone !== 'string') {
-    return messages.info('phoneWrongPattern', phone, is.INVALID);
+    return info('phoneWrongPattern', phone, is.INVALID);
   }
 
   if (!phone.trim().match(/^(\+|)[0-9 ]+$/)) {
-    return messages.info('phoneWrongPattern', phone, is.INVALID);
+    return info('phoneWrongPattern', phone, is.INVALID);
   }
 
-  return messages.info('', '', is.VALID);
+  return info('', '', is.VALID);
 }

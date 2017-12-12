@@ -1,7 +1,5 @@
-import Messages from './messages.js';
+import { info } from './messages.js';
 import is from './valid-object.js';
-
-const message = new Messages();
 
 /**
  * Gender Validation
@@ -11,11 +9,11 @@ const message = new Messages();
  */
 export default function validateGender(gender) {
   if (!gender) {
-    return message.info('genderIsRequired', '', is.INVALID);
+    return info('genderIsRequired', '', is.INVALID);
   }
 
   if (gender === 'FEMALE' || gender === 'MALE') {
-    return message.info('', '', is.VALID);
+    return info('', '', is.VALID);
   }
-  return message.info('genderIsInvalid', gender, is.INVALID);
+  return info('genderIsInvalid', gender, is.INVALID);
 }

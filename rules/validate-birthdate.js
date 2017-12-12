@@ -1,8 +1,7 @@
 import moment from 'moment';
-import Messages from './messages.js';
+import { info } from './messages.js';
 import is from './valid-object.js';
 
-const message = new Messages();
 /**
  * Current Date by moment()
  * @memberOf Validator
@@ -29,9 +28,9 @@ const validateAge = (birthdate) => {
    */
   const yearDifference = moment(today).diff(birthdate, 'years');
   if (yearDifference >= MIN_AGE) {
-    return message.info('', '', is.VALID);
+    return info('', '', is.VALID);
   }
-  return message.info('birthdateMinAge', yearDifference, is.INVALID);
+  return info('birthdateMinAge', yearDifference, is.INVALID);
 };
 
 /**
@@ -42,11 +41,11 @@ const validateAge = (birthdate) => {
  */
 export default function validateBirthdate(birthdate) {
   if (!birthdate) {
-    return message.info('birthdateIsRequired', '', is.INVALID);
+    return info('birthdateIsRequired', '', is.INVALID);
   }
 
   if (moment(birthdate, 'DD-MM-YYYY').isValid()) {
     return validateAge(birthdate);
   }
-  return message.info('birthdateIsInvalid', birthdate, is.INVALID);
+  return info('birthdateIsInvalid', birthdate, is.INVALID);
 }

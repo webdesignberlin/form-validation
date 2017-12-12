@@ -1,7 +1,5 @@
-import Messages from './messages.js';
+import { info } from './messages.js';
 import is from './valid-object.js';
-
-const messages = new Messages();
 
 /**
  * Name Validation
@@ -11,16 +9,16 @@ const messages = new Messages();
  */
 export default function validateName(name) {
   if (!name) {
-    return messages.info('nameIsRequired', '', is.INVALID);
+    return info('nameIsRequired', '', is.INVALID);
   }
 
   if (name.length !== name.trim().length) {
-    return messages.info('nameLengthIsIncorrect', name, is.INVALID);
+    return info('nameLengthIsIncorrect', name, is.INVALID);
   }
 
   const matches = name.match(/^((?!^-)(?!\s\s)[a-zA-Z\u00C0-\u024F\- ](?!-{2})(?!-$)){1,255}$/);
   if (matches) {
-    return messages.info('', '', is.VALID);
+    return info('', '', is.VALID);
   }
-  return messages.info('nameValueNotMatched', name, is.INVALID);
+  return info('nameValueNotMatched', name, is.INVALID);
 }

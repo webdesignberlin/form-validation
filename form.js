@@ -39,10 +39,19 @@ export class Form {
    * @memberof Form
    */
   init() {
-    console.log(this.config);
     if (this.config.initialValidate) {
       this.validateAll()
     }
+  }
+
+  /**
+   * Handle Required Fields without Content and Validation Rule
+   * @param {HTMLElement} field
+   * @returns {boolean}
+   * @memberof Form
+   */
+  isRequiredAndEmpty(field) {
+    return (field.required && field.value.length <= 0);
   }
 
   /**
@@ -61,6 +70,9 @@ export class Form {
    * @memberof Form
    */
   getErrorMessage(field) {
+    if (this.isRequiredAndEmpty(field)) {
+      return Validator['isRequired'](field.value).message;
+    }
     const validatorRule = field.dataset.validator;
     return Validator[validatorRule](field.value).message;
   }
@@ -72,6 +84,9 @@ export class Form {
    * @memberof Form
    */
   getErrorObject(field) {
+    if (this.isRequiredAndEmpty(field)) {
+      return Validator['isRequired'](field.value);
+    }
     const validatorRule = field.dataset.validator;
     return Validator[validatorRule](field.value);
   }
@@ -85,6 +100,9 @@ export class Form {
    */
   fieldIsValid(field) {
     const validatorRule = field.dataset.validator;
+    if (this.isRequiredAndEmpty(field)) {
+      return false;
+    }
     return Validator[validatorRule](field.value).isValid;
   }
 

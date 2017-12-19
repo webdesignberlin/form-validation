@@ -20,5 +20,6 @@ export default function validateName(name) {
   if (matches) {
     return info('', '', is.VALID);
   }
+  
   return info('nameValueNotMatched', name, is.INVALID);
 }

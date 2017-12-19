@@ -1,3 +1,4 @@
+import validateIsRequired from './validate-is-required.js';
 import validateName from './validate-name.js';
 import validateEmail from './validate-email.js';
 import validateGender from './validate-gender.js';
@@ -15,6 +16,7 @@ import validatePhone from './validate-phone.js';
  * uuid: validateUuid, state: validateState}}
  */
 const Validator = {
+  isRequired: validateIsRequired,
   firstName: validateName,
   lastName: validateName,
   // birthdate: validateBirthdate,

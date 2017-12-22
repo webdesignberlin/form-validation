@@ -91,10 +91,11 @@ async function displayErrorMessage(target, message = null) {
   const errorElement = `<span class="error-message">${await translate(message)}</span>`;
   const element = target;
 
-  if (element.querySelectorAll('.error-message').length === 0) {
+  if (element.parentNode.querySelectorAll('.error-message').length === 0) {
+    console.log('blubb');
     element.insertAdjacentHTML('afterend', errorElement);
   } else {
-    element.querySelector('.error-message').innerText = message;
+    element.parentNode.querySelector('.error-message').innerText = message;
   }
 }
 

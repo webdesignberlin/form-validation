@@ -45,8 +45,9 @@ const form1 = document.getElementById('form-1');
 const formHandling = new Form(form1);
 
 document.addEventListener('form-validation', function (e) { 
-  displayErrorMessage(e.detail.currentField, e.detail.message)
-  console.log(e.detail);
+  const inputId = e.detail.currentField.id;
+  const target = document.querySelector(`[for="${inputId}"]`);
+  displayErrorMessage(target, e.detail.message)
 });
 
 /* for(const field of formHandling.getFieldsToValidate()) {
@@ -87,15 +88,20 @@ function handleInputKeyDown(event) {
   }
 }
 
+/**
+ * 
+ * @param {HTMLElement} target 
+ * @param {*} message 
+ */
 async function displayErrorMessage(target, message = null) {
-  const errorElement = `<span class="error-message">${await translate(message)}</span>`;
+  const translatedMessage = await translate(message);
+  const errorElement = `<span class="error-message">${translatedMessage}</span>`;
   const element = target;
 
-  if (element.parentNode.querySelectorAll('.error-message').length === 0) {
-    console.log('blubb');
-    element.insertAdjacentHTML('afterend', errorElement);
+  if (element.querySelectorAll('.error-message').length === 0) {
+    element.insertAdjacentHTML('beforeend', errorElement);
   } else {
-    element.parentNode.querySelector('.error-message').innerText = message;
+    element.querySelector('.error-message').innerText = translatedMessage;
   }
 }
 

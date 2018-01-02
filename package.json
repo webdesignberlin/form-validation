@@ -1,0 +1,23 @@
+{
+  "name": "form-validation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webdesignberlin/form-validation.git"
+  },
+  "author": "Michael Gerstmann <guten-tag@seiler-gerstmann.de> (http://micha.seiler-gerstmann.de)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/webdesignberlin/form-validation/issues"
+  },
+  "homepage": "https://github.com/webdesignberlin/form-validation#readme",
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}

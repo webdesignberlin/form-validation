@@ -6,14 +6,12 @@ import Validator from './rules/index.js';
  * @property {string} classHasError - Class to Display on Error
  * @property {string} classIsFine - Class to Display on Success
  * @property {string} classIgnore - Class of fields which dont be validate
- * @property {string} classSubmitDisabled - Class for disabled Buttons
  * @property {boolean} initialValidate - True if Form Validation on init
  */
 const options = {
   classHasError: 'has-error',
   classIsFine: 'is-fine',
   classIgnore: 'ignore',
-  classSubmitDisabled: 'is-disabled',
   initialValidate: false,
 };
 
@@ -59,20 +57,6 @@ export class Form {
    */ 
   getFieldsToValidate() {
     return this.elForm.querySelectorAll(`input:not(.${this.config.classIgnore})`);
-  }
-
-  /**
-   * Get Validation Message
-   * @param {HTMLElement} field
-   * @returns {string}
-   * @memberof Form
-   */
-  getErrorMessage(field) {
-    if (this.isRequiredAndEmpty(field)) {
-      return Validator['isRequired'](field.value).message;
-    }
-    const validatorRule = field.dataset.validator;
-    return Validator[validatorRule](field.value).message;
   }
 
   /**

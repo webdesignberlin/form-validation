@@ -1,5 +1,5 @@
-import { Form } from './form.js';
-import { eventInit, handleSubmit, handleInputChange, handleInputKeyDown } from './event-handling.js';
+import { Form } from '../index.js';
+import { eventInit, handleSubmit, handleInputChange, handleInputKeyDown } from '../event-handling.js';
 
 const $form = document.getElementById('form-1');
 const form = new Form($form);

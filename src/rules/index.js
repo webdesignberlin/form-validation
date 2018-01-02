@@ -15,7 +15,7 @@ import validatePhone from './validate-phone.js';
  * email: validateEmail, gender: validateGender,
  * uuid: validateUuid, state: validateState}}
  */
-const Validator = {
+const validator = {
   isRequired: validateIsRequired,
   firstName: validateName,
   lastName: validateName,
@@ -27,4 +27,4 @@ const Validator = {
   state: validateState,
 };
 
-export default Validator;
+export default validator;

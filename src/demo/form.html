@@ -12,7 +12,7 @@
         margin: 1rem;
       }
 
-      .form--1 label {
+      .form label {
         display: block;
         padding-top: 0.4rem;
         margin-bottom: 1.4rem;
@@ -50,6 +50,44 @@
             <option>Option 1</option>
           </select>
            Auswahl Select
+        </label>
+
+        <p><button class="js-submit">Ab gehts</button></p>
+      </fieldset>
+    </form>
+
+    <p><button class="js-submit" form="form-2">Button outside Forms for Form 2</button></p>
+
+    <form id="form-2" class="form form--2">
+      <fieldset>
+        <legend>Form 2 Fields (working Validation)</legend>
+
+        <input type="text" id="first-name-2" placeholder="Maxi" data-validator="firstName">
+        <label for="first-name-2">Vorname</label>
+
+        <input type="text" id="last-name-2" placeholder="Musterfrau" data-validator="lastName" required>
+        <label for="last-name-2">Nachname</label>
+
+        <input type="text" class="ignore" id="ignore-2" placeholder="something like !-..5">
+        <label for="ignore-2">Dont validate please</label>
+
+        <input type="tel" id="phone-2" placeholder="+49 30 3432622-113" data-validator="phone">
+        <label for="phone-2">Telefon</label>
+
+        <input type="email" id="email-2" placeholder="maxi@musterfrau.de" data-validator="email">
+        <label for="email-2">E-Mail</label>
+
+        <label for="checkbox-2">
+          <input type="checkbox" id="checkbox-2" required data-validator="state">
+          Radio Button
+        </label>
+
+        <label for="select-2">
+          <select id="select-2" required>
+            <option></option>
+            <option>Option 1</option>
+          </select>
+          Auswahl Select
         </label>
 
         <p><button class="js-submit">Ab gehts</button></p>
@@ -505,11 +543,6 @@
         </li>
       </ul>
       <button class="js-submit">Ab gehts</button>
-    </form>
-
-    <form id="form-2">
-      <input type="text" id="user-2" placeholder="User 2">
-      <input type="text" id="city-2" placeholder="City 2">
     </form>
   </body>
   <script async src="index.js" type="module"></script>

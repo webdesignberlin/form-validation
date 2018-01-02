@@ -1,4 +1,4 @@
-import Validator from './rules/index.js';
+import validator from './rules/index.js';
 
 /**
  * Options Object of Form
@@ -67,10 +67,10 @@ export class Form {
    */
   getErrorObject(field) {
     if (this.isRequiredAndEmpty(field)) {
-      return Validator['isRequired'](field.value);
+      return validator['isRequired'](field.value);
     }
     const validatorRule = field.dataset.validator;
-    return Validator[validatorRule](field.value);
+    return validator[validatorRule](field.value);
   }
 
   /**
@@ -85,7 +85,7 @@ export class Form {
     if (this.isRequiredAndEmpty(field)) {
       return false;
     }
-    return Validator[validatorRule](field.value).isValid;
+    return validator[validatorRule](field.value).isValid;
   }
 
   /**

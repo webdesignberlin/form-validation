@@ -1,5 +1,9 @@
 import { Form } from './form.js';
 
+/**
+ * Handle Error Message Translation
+ * @param {String} value 
+ */
 async function translate(value) {
   /* const catalog = {
     nameLengthIsIncorrect: 'Leerzeichen sind nicht möglich',
@@ -27,6 +31,10 @@ async function translate(value) {
     return catalog[key] || key;
   } */
 
+  /**
+   * Translate Error Messages via given Key
+   * @param {String} key 
+   */
   async function getTranslation(key) {
     try {
       let data = await fetch('validation-messages.json');
@@ -44,10 +52,19 @@ async function translate(value) {
 const form1 = document.getElementById('form-1');
 const formHandling = new Form(form1);
 
+
+/**
+ * Show or remove Error Messages if validation Event is fired
+ */
 document.addEventListener('form-validation', function (e) { 
   const inputId = e.detail.currentField.id;
   const target = document.querySelector(`[for="${inputId}"]`);
-  displayErrorMessage(target, e.detail.message)
+
+  if (e.detail.isValid) {
+    removeErrorMessage(target);
+  } else {
+    displayErrorMessage(target, e.detail.message)
+  }
 });
 
 /* for(const field of formHandling.getFieldsToValidate()) {
@@ -56,8 +73,8 @@ document.addEventListener('form-validation', function (e) {
 
 /**
  * Focus next Input in Form
- * @param currentField - Node of current Element
- * @param inputs - List of Fields inclusive currentField
+ * @param {HTMLElement} currentField - Node of current Element
+ * @param {NodeList} inputs - List of Fields inclusive currentField
  */
 function handleFocusonValid(currentField, inputs) {
   for (let [index, element] of inputs.entries()) {
@@ -70,7 +87,7 @@ function handleFocusonValid(currentField, inputs) {
 
 /**
  * Handle Form Inputs by KeyDown Events
- * @param event
+ * @param {*} event
  */
 function handleInputKeyDown(event) {
   const field = event.target;
@@ -89,7 +106,7 @@ function handleInputKeyDown(event) {
 }
 
 /**
- * 
+ * Show Error Messages
  * @param {HTMLElement} target 
  * @param {*} message 
  */
@@ -105,10 +122,19 @@ async function displayErrorMessage(target, message = null) {
   }
 }
 
+/**
+ * Remove Error Messages
+ * @param {HTMLElement} target 
+ */
+async function removeErrorMessage(target) {
+  const errorElement = target.querySelector('.error-message');
+  errorElement.remove();
+}
+
 
 /**
  * Handle Form Input Events
- * @param event - Event
+ * @param {*} event - Event
  */
 function handleInputChange(event) {
   const field = event.target;
@@ -116,6 +142,10 @@ function handleInputChange(event) {
   formHandling.validate(field);
 }
 
+/**
+ * Handle Submit Events
+ * @param {*} event 
+ */
 function handleSubmit(event) {
   event.preventDefault();
   formHandling.validateAll();

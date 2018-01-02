@@ -7,8 +7,8 @@
     "browser": true,
     "node": true
   },
+  "__comment": "enable additional rules",
   "rules": {
-    // enable additional rules
     "linebreak-style": [
       "off"
     ],
@@ -18,8 +18,7 @@
         "functions": false
       }
     ],
-    // Disable for of and for in loop restriction
-    // https://github.com/airbnb/javascript/blob/b6fc6dc7c3cb76497db0bb81edaa54d8f3427796/packages/eslint-config-airbnb-base/rules/style.js#L257
+    "__comment": "Disable for of and for in loop restriction https: //github.com/airbnb/javascript/blob/b6fc6dc7c3cb76497db0bb81edaa54d8f3427796/packages/eslint-config-airbnb-base/rules/style.js#L257",
     "no-restricted-syntax": [
       "error",
       "LabeledStatement",

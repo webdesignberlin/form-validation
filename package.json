@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:unit": "mocha --require babel-core/register --recursive ./tests --silent",
-    "test:coverage": "cross-env NODE_ENV=test nyc --all --reporter=text-summary npm run test:unit"
+    "test:coverage": "cross-env NODE_ENV=test nyc --all --reporter=html npm run test:unit"
   },
   "repository": {
     "type": "git",

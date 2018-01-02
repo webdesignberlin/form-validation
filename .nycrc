@@ -4,7 +4,9 @@
     "functions": 99,
     "branches": 99,
     "include": [
-        "**/*.js"
+      "src/**/*.js"
+    ],
+    "exclude": [
     ],
     "require": [
       "babel-register"
@@ -16,4 +18,4 @@
     "report-dir": "./coverage",
     "sourceMap": false,
     "instrument": false
-}
+  }

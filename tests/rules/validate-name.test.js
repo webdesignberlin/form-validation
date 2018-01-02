@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import validate from '../../rules/validate-name';
+import validate from '../../src/rules/validate-name';
 
 describe('Name Validation', () => {
   it('should return true for a valid name', () => {

@@ -1,52 +1,14 @@
 import { Form } from './form.js';
 
 /**
- * Handle Error Message Translation
+ * Handle Error Message Translation, Translate Error Messages via given Key
  * @param {String} value 
  */
 async function translate(value) {
-  /* const catalog = {
-    nameLengthIsIncorrect: 'Leerzeichen sind nicht möglich',
-    nameIsRequired: 'Pflichtfeld',
-    nameValueNotMatched: 'darf keine Sonderzeichen enthalten',
+  let data = await fetch('validation-messages.json');
+  let parsedData = await data.json();
 
-    birthdateMinAge: 'Mindestalter 15 Jahre',
-    birthdateIsRequired: 'Pflichtfeld',
-    birthdateIsInvalid: 'hat ein falsches Format (DD-MM-YYYY)',
-
-    genderIsRequired: 'Pflichtfeld',
-    genderIsInvalid: 'Fehlerhafte Eingabe. Geschlecht erwartet "FEMALE" oder "MALE"',
-
-    stateIsRequired: 'muss naktiviert sein',
-    stateIsNotTrue: 'muss bestätigt werden',
-
-    emailIsRequired: 'Pflichtfeld',
-    emailWrongPattern: 'Bitte gib eine gültige E-Mail-Adresse an.',
-
-    phoneIsRequired: 'Pflichtfeld',
-    phoneWrongPattern: 'Bitte gib eine gültige Teefonnummer an.',
-  }; */
-
-  /* function getTranslation(key) {
-    return catalog[key] || key;
-  } */
-
-  /**
-   * Translate Error Messages via given Key
-   * @param {String} key 
-   */
-  async function getTranslation(key) {
-    try {
-      let data = await fetch('validation-messages.json');
-      let parsedData = await data.json();
-
-      return parsedData[key] || key;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  return getTranslation(value);
+  return parsedData[value] || value;
 }
 
 const form1 = document.getElementById('form-1');

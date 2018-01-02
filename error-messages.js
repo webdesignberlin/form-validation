@@ -32,5 +32,7 @@ export async function displayErrorMessage(target, message = null) {
  */
 export async function removeErrorMessage(target) {
   const errorElement = target.querySelector('.error-message');
-  errorElement.remove();
+  if (errorElement) {
+    errorElement.remove();
+  }
 }

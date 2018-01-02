@@ -21,10 +21,8 @@ export class Form {
   /**
    * Creates a new Form Handler
    * @constructs Form
-   * @param {HTMLElement} form - Form Dom Node.
-   * @param {HTMLElement|NodeList|Array} fields
-   * @param {HTMLElement|NodeList|Array} submitBtns
-   * @param {configOptions|Object} config
+   * @param {HTMLElement} form - Form Dom Node
+   * @param {options|Object} config
    */
   constructor(form, config) {
     this.elForm = form;
@@ -107,7 +105,7 @@ export class Form {
   }
 
   /**
-   * Hanlde Invalid Fields
+   * Handle Invalid Fields
    * @function
    * @memberof Form
    */
@@ -117,7 +115,7 @@ export class Form {
   }
 
   /**
-   * Hanlde Valid Fields
+   * Handle Valid Fields
    * @function
    * @memberof Form
    */
@@ -138,6 +136,11 @@ export class Form {
       this.handleInvalidField(field);
     }
 
+    /**
+     * Form Validation Event
+     * Event with Form Field Information (fieldIsValid, form, currentField)
+     * @type {CustomEvent}
+     */
     const validationEvent = new CustomEvent('form-validation', {
       detail: Object.assign(this.getErrorObject(field), {
         fieldIsValid: this.fieldIsValid(field),

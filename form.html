@@ -21,38 +21,44 @@
     </style>
 
     <form id="form-1" class="form form--1">
-      <input type="text" id="first-name" placeholder="Maxi" data-validator="firstName">
-      <label for="first-name">Vorname</label>
+      <fieldset>
+        <legend>Form Fields (working Validation)</legend>
 
-      <input type="text" id="last-name" placeholder="Musterfrau" data-validator="lastName" required>
-      <label for="last-name">Nachname</label>
+        <input type="text" id="first-name" placeholder="Maxi" data-validator="firstName">
+        <label for="first-name">Vorname</label>
 
-      <input type="text" class="ignore" id="ignore" placeholder="something like !-..5">
-      <label for="ignore">Dont validate please</label>
+        <input type="text" id="last-name" placeholder="Musterfrau" data-validator="lastName" required>
+        <label for="last-name">Nachname</label>
 
-      <input type="tel" id="phone" placeholder="+49 30 3432622-113" data-validator="phone">
-      <label for="phone">Telefon</label>
+        <input type="text" class="ignore" id="ignore" placeholder="something like !-..5">
+        <label for="ignore">Dont validate please</label>
 
-      <input type="email" id="email" placeholder="maxi@musterfrau.de" data-validator="email">
-      <label for="email">E-Mail</label>
+        <input type="tel" id="phone" placeholder="+49 30 3432622-113" data-validator="phone">
+        <label for="phone">Telefon</label>
 
-      <label for="checkbox">
-        <input type="checkbox" id="checkbox" required data-validator="state">
-        Radio Button
-      </label>
+        <input type="email" id="email" placeholder="maxi@musterfrau.de" data-validator="email">
+        <label for="email">E-Mail</label>
 
-      <label for="select">
-        <select id="select" required>
-          <option></option>
-          <option>Option 1</option>
-        </select>
-         Auswahl Select
-      </label>
-      
-      <p><button class="js-submit">Ab gehts</button></p>
+        <label for="checkbox">
+          <input type="checkbox" id="checkbox" required data-validator="state">
+          Radio Button
+        </label>
+
+        <label for="select">
+          <select id="select" required>
+            <option></option>
+            <option>Option 1</option>
+          </select>
+           Auswahl Select
+        </label>
+
+        <p><button class="js-submit">Ab gehts</button></p>
+      </fieldset>
     </form>
 
     <form id="native-form">
+      <h1>Native Form Fields</h1>
+      <p>@TODO Test with Validation</p>
       <ul>
         <li>
           <input autofocus>

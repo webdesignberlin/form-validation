@@ -4,7 +4,7 @@ import is from './valid-object.js';
 
 /**
  * uuid Validation
- * @memberOf Validator
+ * @memberof validator
  * @param {string} uuid
  * @returns {{message: string, value: string, isValid: boolean}|*|{}}
  */

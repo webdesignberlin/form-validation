@@ -3,7 +3,7 @@ import is from './valid-object.js';
 
 /**
  * Phone Validation
- * @memberOf Validator
+ * @memberof validator
  * @param {string} phone - phone number
  * @returns {{message: string, value: string, isValid: boolean}|*|{}}
  */

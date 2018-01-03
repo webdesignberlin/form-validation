@@ -3,7 +3,7 @@ import is from './valid-object.js';
 
 /**
  * Name Validation
- * @memberOf Validator
+ * @memberof validator
  * @param {string} name - First Name or Last Name
  * @returns {{message: string, value: string, isValid: boolean}|*|{}}
  */
@@ -20,6 +20,6 @@ export default function validateName(name) {
   if (matches) {
     return info('', '', is.VALID);
   }
-  
+
   return info('nameValueNotMatched', name, is.INVALID);
 }

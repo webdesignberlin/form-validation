@@ -4,7 +4,7 @@
  * @param {string} [message=''] - Error Message
  * @param {string} [value=''] - current Input Value
  * @param {boolean} [status=false] - Is Valid true/false
- * @returns 
+ * @returns {{message: string, value: string, isValid: boolean}}
  */
 export function info(message = '', value = '', status = false) {
   return {
@@ -12,6 +12,6 @@ export function info(message = '', value = '', status = false) {
     value,
     isValid: status,
   };
-};
+}
 
 export default info;

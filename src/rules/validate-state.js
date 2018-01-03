@@ -3,7 +3,7 @@ import is from './valid-object.js';
 
 /**
  * State Validation
- * @memberOf Validator
+ * @memberof validator
  * @param {boolean|string} value - true/false as String or Bool
  * @returns {{message: string, value: string, isValid: boolean}|*|{}}
  */

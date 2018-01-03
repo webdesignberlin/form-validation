@@ -35,6 +35,13 @@ export class Form {
    * @memberof Form
    */
   init() {
+    // Set fallback for required fields without validation rule
+    for (const element of [...this.getFieldsToValidate()]) {
+      if(!element.dataset.validator) {
+        element.dataset.validator = 'isRequired';
+      }
+    }
+
     if (this.config.initialValidate) {
       this.validateAll()
     }
@@ -54,9 +61,9 @@ export class Form {
    * Get Field to Validate
    * @function
    * @memberof Form
-   */ 
+   */
   getFieldsToValidate() {
-    return this.elForm.querySelectorAll(`input:not(.${this.config.classIgnore})`);
+    return this.elForm.querySelectorAll(`input:not(.${this.config.classIgnore}), select:not(.${this.config.classIgnore}), textarea:not(.${this.config.classIgnore})`);
   }
 
   /**
@@ -66,11 +73,16 @@ export class Form {
    * @memberof Form
    */
   getErrorObject(field) {
+    const validatorRule = field.dataset.validator;
+    if (validatorRule) {
+      return validator[validatorRule](field.value);
+    }
+
     if (this.isRequiredAndEmpty(field)) {
       return validator['isRequired'](field.value);
+    } else {
+      return {};
     }
-    const validatorRule = field.dataset.validator;
-    return validator[validatorRule](field.value);
   }
 
   /**
@@ -82,10 +94,11 @@ export class Form {
    */
   fieldIsValid(field) {
     const validatorRule = field.dataset.validator;
-    if (this.isRequiredAndEmpty(field)) {
-      return false;
+    if (validatorRule) {
+      return validator[validatorRule](field.value).isValid;
+    } else {
+     return this.isRequiredAndEmpty(field);
     }
-    return validator[validatorRule](field.value).isValid;
   }
 
   /**

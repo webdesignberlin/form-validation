@@ -1,21 +1,21 @@
 {
-    "lines": 99,
-    "statements": 99,
-    "functions": 99,
-    "branches": 99,
-    "include": [
-      "src/**/*.js"
-    ],
-    "exclude": [
-    ],
-    "require": [
-      "babel-register"
-    ],
-    "extension": [
-      ".js"
-    ],
-    "cache": true,
-    "report-dir": "./coverage",
-    "sourceMap": false,
-    "instrument": false
-  }
+  "lines": 99,
+  "statements": 99,
+  "functions": 99,
+  "branches": 99,
+  "include": [
+    "src/**/*.js"
+  ],
+  "exclude": [
+  ],
+  "require": [
+    "babel-register"
+  ],
+  "extension": [
+    ".js"
+  ],
+  "cache": true,
+  "report-dir": "./coverage",
+  "sourceMap": false,
+  "instrument": false
+}

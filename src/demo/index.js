@@ -1,4 +1,4 @@
-import { Form } from '../index.js';
+import Form from '../index.js';
 import { eventInit, handleSubmit, handleInputChange, handleInputKeyDown } from '../event-handling.js';
 
 const $form = document.getElementById('form-1');

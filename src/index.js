@@ -15,7 +15,7 @@ const options = {
   initialValidate: false,
 };
 
-export class Form {
+export default class Form {
   /**
    * Creates a new Form Handler
    * @constructs Form
@@ -37,13 +37,13 @@ export class Form {
   init() {
     // Set fallback for required fields without validation rule
     for (const element of [...this.getFieldsToValidate()]) {
-      if(!element.dataset.validator) {
+      if (!element.dataset.validator) {
         element.dataset.validator = 'isRequired';
       }
     }
 
     if (this.config.initialValidate) {
-      this.validateAll()
+      this.validateAll();
     }
   }
 
@@ -53,7 +53,7 @@ export class Form {
    * @returns {boolean}
    * @memberof Form
    */
-  isRequiredAndEmpty(field) {
+  static isRequiredAndEmpty(field) {
     return (field.required && field.value.length <= 0);
   }
 
@@ -79,10 +79,10 @@ export class Form {
     }
 
     if (this.isRequiredAndEmpty(field)) {
-      return validator['isRequired'](field.value);
-    } else {
-      return {};
+      return validator.isRequired(field.value);
     }
+
+    return {};
   }
 
   /**
@@ -96,9 +96,9 @@ export class Form {
     const validatorRule = field.dataset.validator;
     if (validatorRule) {
       return validator[validatorRule](field.value).isValid;
-    } else {
-     return this.isRequiredAndEmpty(field);
     }
+
+    return this.isRequiredAndEmpty(field);
   }
 
   /**
@@ -143,7 +143,7 @@ export class Form {
         fieldIsValid: this.fieldIsValid(field),
         form: this.elForm,
         currentField: field,
-      })
+      }),
     });
 
     document.dispatchEvent(validationEvent);

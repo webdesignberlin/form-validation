@@ -4,7 +4,7 @@
   "functions": 99,
   "branches": 99,
   "include": [
-    "src/rules/**/*.js"
+    "src/**/*.js"
   ],
   "exclude": [
     "src/demo"

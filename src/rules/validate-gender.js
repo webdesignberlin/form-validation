@@ -3,7 +3,7 @@ import is from './valid-object.js';
 
 /**
  * Gender Validation
- * @memberOf Validator
+ * @memberof validator
  * @param gender
  * @returns {{message: string, value: string, isValid: boolean}|*|{}}
  */

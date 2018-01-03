@@ -4,20 +4,20 @@ import is from './valid-object.js';
 
 /**
  * Current Date by moment()
- * @memberOf Validator
+ * @memberof validator
  * @type {*}
  */
 const today = moment();
 /**
  * Min Age for Trial Workout
- * @memberOf Validator
+ * @memberof validator
  * @type {number}
  */
 const MIN_AGE = 15;
 
 /**
  * Age Validation
- * @memberOf Validator
+ * @memberof validator
  * @param {string} birthdate - Birthdate as "DD-MM-YYYY"
  * @returns {{message: string, value: string, isValid: boolean}|*|{}}
  */
@@ -35,7 +35,7 @@ const validateAge = (birthdate) => {
 
 /**
  * Birthdate Validation
- * @memberOf Validator
+ * @memberof validator
  * @param {string} birthdate - Birthdate as "DD-MM-YYYY"
  * @returns {{message: string, value: string, isValid: boolean}|*|{}}
  */

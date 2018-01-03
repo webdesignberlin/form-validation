@@ -3,7 +3,7 @@ import is from './valid-object.js';
 
 /**
  * Email Validation
- * @memberOf Validator
+ * @memberof validator
  * @param {string} mail - Email String
  * @returns {{message: string, value: string, isValid: boolean}|*|{}}
  */

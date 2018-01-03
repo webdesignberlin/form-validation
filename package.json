@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "doc": "jsdoc --configure .jsdocrc.json",
     "test:unit": "mocha --require babel-core/register --recursive ./tests/ --silent",
     "test:coverage": "cross-env NODE_ENV=test nyc --all --reporter=text-summary npm run test:unit",
     "posttest:coverage": "nyc report --reporter=lcov"
@@ -31,6 +32,7 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
     "istanbul": "^0.4.5",
+    "jsdoc": "^3.5.5",
     "mocha": "^4.1.0",
     "nyc": "^11.4.1"
   }

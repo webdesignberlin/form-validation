@@ -3,8 +3,8 @@
  * @param {String} value
  */
 async function translate(value) {
-  let data = await fetch('validation-messages.json');
-  let parsedData = await data.json();
+  const data = await fetch('validation-messages.json');
+  const parsedData = await data.json();
 
   return parsedData[value] || value;
 }

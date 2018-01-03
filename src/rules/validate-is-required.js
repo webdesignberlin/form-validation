@@ -8,6 +8,14 @@ import is from './valid-object.js';
  * @returns {{message: string, value: string, isValid: boolean}|*|{}}
  */
 export default function validateIsRequired(input) {
+  if (typeof input === 'boolean' && input === true) {
+      return info('', '', is.VALID);
+  }
+
+  if (typeof input === 'boolean' && input === false) {
+    return info('isRequired', input, is.INVALID);
+  }
+
   if (!input) {
     return info('isRequired', '', is.INVALID);
   }
@@ -16,12 +24,5 @@ export default function validateIsRequired(input) {
     return info('isRequired', input, is.INVALID);
   }
 
-  if (typeof input === 'boolean') {
-    if (input) {
-      return info('', '', is.VALID);
-    }
-    return info('isRequired', input, is.INVALID);
-  }
-
-  return info('isRequired', '', is.INVALID);
+  return info('isRequired', input, is.VALID);
 }

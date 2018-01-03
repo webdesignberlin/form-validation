@@ -15,7 +15,9 @@ export function eventInit() {
     if (e.detail.isValid) {
       await removeErrorMessage(target);
     } else {
-      await displayErrorMessage(target, e.detail.message)
+      await displayErrorMessage(target, e.detail.message, {
+        url: 'validation-messages.json',
+      });
     }
   });
 }

@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:unit": "mocha --require babel-core/register --recursive ./tests --silent",
-    "test:coverage": "cross-env NODE_ENV=test nyc --all --reporter=text-summary npm run test:unit"
+    "test:unit": "mocha --require babel-core/register --recursive ./tests/ --silent",
+    "test:coverage": "cross-env NODE_ENV=test nyc --all --reporter=text-summary npm run test:unit",
+    "posttest:coverage": "nyc report --reporter=lcov"
   },
   "repository": {
     "type": "git",

@@ -1,15 +1,17 @@
 {
-  "presets": [
-    [
-      "es2015"
-    ]
-  ],
-  "plugins": [
-    ["transform-class-properties", { "spec": true }]
-  ],
   "env": {
+    "development": {
+      "presets": [
+        ["es2015", { "modules": false }]
+      ],
+      "plugins": [
+        "external-helpers",
+        ["transform-class-properties", { "spec": true }]
+      ]
+    },
     "test": {
-      "plugins": ["istanbul"]
+      "presets": ["es2015"],
+      "plugins": ["istanbul", ["transform-class-properties", { "spec": true }]]
     }
   }
 }

@@ -53,7 +53,7 @@ export default class Form {
    * @returns {boolean}
    * @memberof Form
    */
-  static isRequiredAndEmpty(field) {
+  isRequiredAndEmpty(field) {
     return (field.required && field.value.length <= 0);
   }
 
@@ -74,7 +74,7 @@ export default class Form {
    */
   getErrorObject(field) {
     const validatorRule = field.dataset.validator;
-    if (validatorRule) {
+    if (validator[validatorRule]) {
       return validator[validatorRule](field.value);
     }
 
@@ -94,7 +94,7 @@ export default class Form {
    */
   fieldIsValid(field) {
     const validatorRule = field.dataset.validator;
-    if (validatorRule) {
+    if (validator[validatorRule]) {
       return validator[validatorRule](field.value).isValid;
     }
 

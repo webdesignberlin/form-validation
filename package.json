@@ -1,7 +1,7 @@
 {
-  "name": "form-validation",
-  "version": "1.0.0",
-  "description": "",
+  "name": "form-validation-with-rules",
+  "version": "2.0.1",
+  "description": "Form Validation with Rules. Currently no support.",
   "main": "index.js",
   "scripts": {
     "doc": "jsdoc --configure .jsdocrc.json",
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/webdesignberlin/form-validation.git"
   },
   "author": "Michael Gerstmann <guten-tag@seiler-gerstmann.de> (http://micha.seiler-gerstmann.de)",
-  "license": "ISC",
+  "license": "private",
   "bugs": {
     "url": "https://github.com/webdesignberlin/form-validation/issues"
   },

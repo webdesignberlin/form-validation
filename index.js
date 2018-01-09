@@ -1,5 +1,3 @@
-const validation = require('./src/form.js');
+import Form from './src/index.js';
 
-module.exports ={
-  validation
-};
+export default Form;

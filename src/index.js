@@ -165,6 +165,35 @@ export default class Form {
   }
 
   /**
+   * Get current Form Status
+   * @returns {{validFields: Array, inValidFields: Array}}
+   */
+  getFormStatus() {
+    const formFields = {
+      validFields: [],
+      inValidFields: [],
+    };
+
+    for (const field of this.fields) {
+      if (this.fieldIsValid(field)) {
+        formFields.validFields.push(field);
+      } else {
+        formFields.inValidFields.push(field);
+      }
+    }
+
+    return formFields;
+  }
+
+  /**
+   * Check if Form is Valid
+   * @returns {boolean}
+   */
+  formIsValid() {
+    return this.getFormStatus().inValidFields.length === 0;
+  }
+
+  /**
    * Validation for all Fields
    * @function
    * @memberof Form

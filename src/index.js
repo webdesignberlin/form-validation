@@ -94,6 +94,7 @@ export default class Form {
    * @returns {boolean}
    */
   fieldIsValid(field) {
+    prepareCheckbox(field);
     const validatorRule = field.dataset.validator;
     if (validator[validatorRule]) {
       return validator[validatorRule](field.value).isValid;
@@ -128,12 +129,12 @@ export default class Form {
    * @memberof Form
    */
   validate(field, silent = false) {
-    prepareCheckbox(field);
     if (silent) {
       const validationEvent = new CustomEvent('form-validation-silent', {
         detail: Object.assign(this.getErrorObject(field), {
           fieldIsValid: this.fieldIsValid(field),
           form: this.elForm,
+          formIsValid: this.formIsValid(),
           currentField: field,
         }),
       });
@@ -157,11 +158,41 @@ export default class Form {
       detail: Object.assign(this.getErrorObject(field), {
         fieldIsValid: this.fieldIsValid(field),
         form: this.elForm,
+        formIsValid: this.formIsValid(),
         currentField: field,
       }),
     });
 
     document.dispatchEvent(validationEvent);
+  }
+
+  /**
+   * Get current Form Status
+   * @returns {{validFields: Array, inValidFields: Array}}
+   */
+  getFormStatus() {
+    const formFields = {
+      validFields: [],
+      inValidFields: [],
+    };
+
+    for (const field of this.fields) {
+      if (this.fieldIsValid(field)) {
+        formFields.validFields.push(field);
+      } else {
+        formFields.inValidFields.push(field);
+      }
+    }
+
+    return formFields;
+  }
+
+  /**
+   * Check if Form is Valid
+   * @returns {boolean}
+   */
+  formIsValid() {
+    return this.getFormStatus().inValidFields.length === 0;
   }
 
   /**

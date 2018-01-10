@@ -1,4 +1,5 @@
 import validator from './rules/index.js';
+import prepareCheckbox from './helpers/prepare-checkbox.js';
 
 /**
  * Options Object of Form
@@ -125,10 +126,9 @@ export default class Form {
    * Field Validation
    * @function
    * @memberof Form
-   * @param {HTMLElement} field - Dom Element to validate
-   * @param {Boolean} silent - Optional to define if trigger Handle Functions
    */
   validate(field, silent = false) {
+    prepareCheckbox(field);
     if (silent) {
       const validationEvent = new CustomEvent('form-validation-silent', {
         detail: Object.assign(this.getErrorObject(field), {
@@ -168,7 +168,6 @@ export default class Form {
    * Validation for all Fields
    * @function
    * @memberof Form
-   * @param {Boolean} silent - Optional to define if trigger Handle Functions
    */
   validateAll(silent = false) {
     for (const field of this.fields) {

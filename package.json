@@ -1,6 +1,6 @@
 {
   "name": "form-validation-with-rules",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Form Validation with Rules. Currently no support.",
   "main": "index.js",
   "scripts": {
@@ -35,5 +35,8 @@
     "jsdoc": "^3.5.5",
     "mocha": "^4.1.0",
     "nyc": "^11.4.1"
+  },
+  "dependencies": {
+    "moment": "^2.20.1"
   }
 }

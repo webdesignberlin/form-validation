@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>Form Validation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
   </head>
   <body>
     <style>
@@ -38,6 +39,9 @@
 
         <input type="email" id="email" placeholder="maxi@musterfrau.de" data-validator="email">
         <label for="email">E-Mail</label>
+
+        <input type="date" id="birthdate" placeholder="01.01.1900" data-validator="birthdate">
+        <label for="birthdate">Geburtsdatum</label>
 
         <label for="checkbox">
           <input type="checkbox" id="checkbox" required data-validator="state">

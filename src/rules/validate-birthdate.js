@@ -1,6 +1,12 @@
-import moment from 'moment';
 import { info } from './messages.js';
 import is from './valid-object.js';
+
+const { moment } = window;
+try {
+  moment();
+} catch (error) {
+  throw new Error('moment.js not found in global window');
+}
 
 /**
  * Current Date by moment()

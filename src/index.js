@@ -134,6 +134,7 @@ export default class Form {
         detail: Object.assign(this.getErrorObject(field), {
           fieldIsValid: this.fieldIsValid(field),
           form: this.elForm,
+          formIsValid: this.formIsValid(),
           currentField: field,
         }),
       });
@@ -157,6 +158,7 @@ export default class Form {
       detail: Object.assign(this.getErrorObject(field), {
         fieldIsValid: this.fieldIsValid(field),
         form: this.elForm,
+        formIsValid: this.formIsValid(),
         currentField: field,
       }),
     });

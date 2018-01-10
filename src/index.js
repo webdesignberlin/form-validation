@@ -94,6 +94,7 @@ export default class Form {
    * @returns {boolean}
    */
   fieldIsValid(field) {
+    prepareCheckbox(field);
     const validatorRule = field.dataset.validator;
     if (validator[validatorRule]) {
       return validator[validatorRule](field.value).isValid;
@@ -128,7 +129,6 @@ export default class Form {
    * @memberof Form
    */
   validate(field, silent = false) {
-    prepareCheckbox(field);
     if (silent) {
       const validationEvent = new CustomEvent('form-validation-silent', {
         detail: Object.assign(this.getErrorObject(field), {

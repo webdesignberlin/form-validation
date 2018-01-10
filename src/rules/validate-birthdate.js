@@ -1,12 +1,17 @@
+import moment from 'https://unpkg.com/moment@2.20.1/src/moment.js';
 import { info } from './messages.js';
 import is from './valid-object.js';
 
-const { moment } = window;
-try {
+if (!moment) {
+  moment = window.moment;
+}
+
+/* try {
   moment();
 } catch (error) {
+  moment = window.moment;
   throw new Error('moment.js not found in global window');
-}
+} */
 
 /**
  * Current Date by moment()

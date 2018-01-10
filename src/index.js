@@ -125,8 +125,23 @@ export default class Form {
    * Field Validation
    * @function
    * @memberof Form
+   * @param {HTMLElement} field - Dom Element to validate
+   * @param {Boolean} silent - Optional to define if trigger Handle Functions
    */
-  validate(field) {
+  validate(field, silent = false) {
+    if (silent) {
+      const validationEvent = new CustomEvent('form-validation-silent', {
+        detail: Object.assign(this.getErrorObject(field), {
+          fieldIsValid: this.fieldIsValid(field),
+          form: this.elForm,
+          currentField: field,
+        }),
+      });
+
+      document.dispatchEvent(validationEvent);
+      return;
+    }
+
     if (this.fieldIsValid(field)) {
       this.handleValidField(field);
     } else {
@@ -153,10 +168,11 @@ export default class Form {
    * Validation for all Fields
    * @function
    * @memberof Form
+   * @param {Boolean} silent - Optional to define if trigger Handle Functions
    */
-  validateAll() {
+  validateAll(silent = false) {
     for (const field of this.fields) {
-      this.validate(field);
+      this.validate(field, silent);
     }
   }
 }

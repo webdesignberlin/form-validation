@@ -25,7 +25,7 @@
       <fieldset>
         <legend>Form Fields (working Validation)</legend>
 
-        <input type="text" id="first-name" placeholder="Maxi" data-validator="firstName">
+        <input autofocus type="text" id="first-name" placeholder="Maxi" data-validator="firstName">
         <label for="first-name">Vorname</label>
 
         <input type="text" id="last-name" placeholder="Musterfrau" data-validator="lastName" required>
@@ -42,6 +42,28 @@
 
         <input type="date" id="birthdate" placeholder="01.01.1900" data-validator="birthdate">
         <label for="birthdate">Geburtsdatum</label>
+
+        <!-- 
+<div class="form-radios" id="gender">
+  <div class="form-radios__wrapper">
+    <h3 class="form__label form-radios__headline">Geschlecht</h3>
+    <div class="form-radio">
+      <input type="radio" class="form-radio__input" id="gender-female" name="gender" value="FEMALE" data-validator="isRequired">
+      <label for="gender-female" class="form-radio__label js-link-effect is-effect">Frau</label>
+    </div>
+    <div class="form-radio">
+      <input type="radio" class="form-radio__input" id="gender-male" name="gender" value="MALE" data-validator="isRequired">
+      <label for="gender-male" class="form-radio__label js-link-effect is-effect">Mann</label>
+    </div>
+  </div>
+</div>
+
+        -->
+
+        <input type="radio" id="gender-male" name="gender" value="MALE" data-validator="gender">
+        <label for="gender-male">Mann</label>
+        <input type="radio" id="gender-female" name="gender" value="FEMALE" data-validator="gender">
+        <label for="gender-female">Frau</label>
 
         <label for="checkbox">
           <input type="checkbox" id="checkbox" required data-validator="state">

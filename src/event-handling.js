@@ -12,6 +12,7 @@ export function eventInit() {
     const inputId = e.detail.currentField.id;
     const target = document.querySelector(`[for="${inputId}"]`);
 
+    console.log(e.detail);
     if (e.detail.isValid) {
       await removeErrorMessage(target);
     } else {

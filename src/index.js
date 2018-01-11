@@ -1,5 +1,19 @@
+import { info } from './rules/messages.js';
 import validator from './rules/index.js';
 import prepareCheckbox from './helpers/prepare-checkbox.js';
+
+function isInvalidRadio(field) {
+  return (field.type === 'radio' && !field.checked);
+}
+
+function isValidRadio(field) {
+  if (field.type === 'radio') {
+    const elsSameName = document.querySelectorAll(`[name="${field.name}"]`);
+    const elsSameNameChecked = document.querySelectorAll(`[name="${field.name}"]:checked`);
+    
+    return elsSameNameChecked.length > 0;
+  }
+}
 
 /**
  * Options Object of Form
@@ -75,15 +89,20 @@ export default class Form {
    */
   getErrorObject(field) {
     const validatorRule = field.dataset.validator;
-    if (validator[validatorRule]) {
+    console.log(field, validator[validatorRule] && !isInvalidRadio(field));
+    if (validator[validatorRule] && !isInvalidRadio(field)) {
       return validator[validatorRule](field.value);
     }
 
-    if (this.isRequiredAndEmpty(field)) {
+    if (this.isRequiredAndEmpty(field) && !isInvalidRadio(field)) {
       return validator.isRequired(field.value);
     }
 
-    return {};
+    if (isInvalidRadio(field)) {
+      return info('radioIsRequired');  
+    }
+
+    return info('error');
   }
 
   /**
@@ -95,6 +114,25 @@ export default class Form {
    */
   fieldIsValid(field) {
     prepareCheckbox(field);
+    if (isInvalidRadio(field)) {
+      // return isValidRadio(field);  
+      if (field.type === 'radio') {
+        const validatorRule = field.dataset.validator;
+        const elsSameName = document.querySelectorAll(`[name="${field.name}"]`);
+        const elsSameNameChecked = document.querySelectorAll(`[name="${field.name}"]:checked`);
+
+        if (elsSameNameChecked.length > 0) {
+          console.log('valid', field);
+          if (validator[validatorRule]) {
+            return validator[validatorRule](field.value).isValid;
+          }
+          return true;
+        } else {
+          return false;
+        }
+      }
+      return false;
+    }
     const validatorRule = field.dataset.validator;
     if (validator[validatorRule]) {
       return validator[validatorRule](field.value).isValid;
@@ -154,6 +192,7 @@ export default class Form {
      * Event with Form Field Information (fieldIsValid, form, currentField)
      * @type {CustomEvent}
      */
+    console.log(this.getErrorObject(field));
     const validationEvent = new CustomEvent('form-validation', {
       detail: Object.assign(this.getErrorObject(field), {
         fieldIsValid: this.fieldIsValid(field),

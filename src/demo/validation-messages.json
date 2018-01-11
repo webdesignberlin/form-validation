@@ -1,4 +1,5 @@
 {
+  "radioIsRequired": "Pflichtfeld",
   "isRequired": "Pflichtfeld",
   "nameLengthIsIncorrect": "Leerzeichen sind nicht möglich",
   "nameIsRequired": "Pflichtfeld",

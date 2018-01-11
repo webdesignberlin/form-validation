@@ -24,7 +24,7 @@
       <fieldset>
         <legend>Form Fields (working Validation)</legend>
 
-        <input type="text" id="first-name" placeholder="Maxi" data-validator="firstName">
+        <input autofocus type="text" id="first-name" placeholder="Maxi" data-validator="firstName">
         <label for="first-name">Vorname</label>
 
         <input type="text" id="last-name" placeholder="Musterfrau" data-validator="lastName" required>
@@ -44,8 +44,16 @@
 
         <label for="checkbox">
           <input type="checkbox" id="checkbox" required data-validator="state">
-          Radio Button
+          Checkbox Button
         </label>
+
+        <div id="gender">
+          <input type="radio" id="gender-male" name="gender" value="MALE" data-validator="gender">
+          <label for="gender-male">Mann</label>
+
+          <input type="radio" id="gender-female" name="gender" value="FEMALE" data-validator="gender">
+          <label for="gender-female">Frau</label>
+        </div>
 
         <label for="select">
           <select id="select" required>

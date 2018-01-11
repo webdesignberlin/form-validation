@@ -6,14 +6,14 @@ import validateEmail from '../../src/rules/validate-email';
 import validateGender from '../../src/rules/validate-gender';
 import validateUuid from '../../src/rules/validate-uuid';
 import validateState from '../../src/rules/validate-state';
-// import validateBirthdate from '../../src/rules/validate-birthdate';
+import validateBirthdate from '../../src/rules/validate-birthdate';
 import validatePhone from '../../src/rules/validate-phone';
 
 const mockObject = {
   isRequired: validateIsRequired,
   firstName: validateName,
   lastName: validateName,
-  // birthdate: validateBirthdate,
+  birthdate: validateBirthdate,
   phone: validatePhone,
   email: validateEmail,
   gender: validateGender,

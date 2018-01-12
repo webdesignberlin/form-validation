@@ -75,6 +75,9 @@ export default class Form {
    */
   getErrorObject(field) {
     const validatorRule = field.dataset.validator;
+    if (field.type === 'radio') {
+      return validator.isRequired(field.value);
+    }
     if (validator[validatorRule]) {
       return validator[validatorRule](field.value);
     }
@@ -95,6 +98,21 @@ export default class Form {
    */
   fieldIsValid(field) {
     prepareCheckbox(field);
+    /*if (field.type === 'radio' && !field.checked) {
+      return false;
+    }*/
+    if (field.type === 'radio') {
+      const elsSameName = this.elForm.querySelectorAll(`[name="${field.name}"]`);
+      const elsSameNameChecked = this.elForm.querySelectorAll(`[name="${field.name}"]:checked`);
+
+      /**
+       * Handle Radio Buttons with same name as Same Validation Element
+       */
+      if (elsSameNameChecked.length <= 0) {
+        return false;
+      }
+    }
+
     const validatorRule = field.dataset.validator;
     if (validator[validatorRule]) {
       return validator[validatorRule](field.value).isValid;
@@ -128,7 +146,21 @@ export default class Form {
    * @function
    * @memberof Form
    */
-  validate(field, silent = false) {
+  validate(field, silent = false) {    
+    if (field.type === 'radio') {
+      const elsSameName = this.elForm.querySelectorAll(`[name="${field.name}"]`);
+      const elsSameNameChecked = this.elForm.querySelectorAll(`[name="${field.name}"]:checked`);
+
+      /**
+       * Handle Radio Buttons with same name as Same Validation Element
+       */
+      if (elsSameNameChecked.length > 0) {
+        for (const radioButton of elsSameName) {
+          this.handleValidField(radioButton);
+        }
+      }
+    }
+
     if (silent) {
       const validationEvent = new CustomEvent('form-validation-silent', {
         detail: Object.assign(this.getErrorObject(field), {

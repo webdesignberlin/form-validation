@@ -8,4 +8,5 @@ export default async function prepareCheckbox(field) {
   if (checkbox.type === 'checkbox') {
     checkbox.value = field.checked || false;
   }
+  return true;
 }

@@ -1,7 +1,6 @@
 <html>
   <head>
     <title>Form Validation</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
   </head>
   <body>
     <style>
@@ -25,7 +24,7 @@
       <fieldset>
         <legend>Form Fields (working Validation)</legend>
 
-        <input type="text" id="first-name" placeholder="Maxi" data-validator="firstName">
+        <input autofocus type="text" id="first-name" placeholder="Maxi" data-validator="firstName">
         <label for="first-name">Vorname</label>
 
         <input type="text" id="last-name" placeholder="Musterfrau" data-validator="lastName" required>
@@ -45,8 +44,24 @@
 
         <label for="checkbox">
           <input type="checkbox" id="checkbox" required data-validator="state">
-          Radio Button
+          Checkbox Button
         </label>
+
+        <div id="gender">
+          <input type="radio" id="gender-male" name="gender" value="MALE" data-validator="gender">
+          <label for="gender-male">Mann</label>
+
+          <input type="radio" id="gender-female" name="gender" value="FEMALE" data-validator="gender">
+          <label for="gender-female">Frau</label>
+        </div>
+
+        <div id="checkboxes">
+          <input type="radio" id="checkboxes-1" name="checkboxes" value="check-1"
+          <label for="checkboxes-1">Check 1</label>
+        
+          <input type="radio" id="checkboxes-2" name="checkboxes" value="check-2">
+          <label for="checkboxes-2">Check 2</label>
+        </div>
 
         <label for="select">
           <select id="select" required>

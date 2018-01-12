@@ -1,30 +1,6 @@
-import moment from 'https://unpkg.com/moment@2.20.1/src/moment.js';
 import { info } from './messages.js';
 import is from './valid-object.js';
 
-if (!moment) {
-  moment = window.moment;
-}
-
-/* try {
-  moment();
-} catch (error) {
-  moment = window.moment;
-  throw new Error('moment.js not found in global window');
-} */
-
-/**
- * Current Date by moment()
- * @memberof validator
- * @type {*}
- */
-const today = moment();
-/**
- * Min Age for Trial Workout
- * @memberof validator
- * @type {number}
- */
-const MIN_AGE = 15;
 
 /**
  * Age Validation
@@ -33,30 +9,74 @@ const MIN_AGE = 15;
  * @returns {{message: string, value: string, isValid: boolean}|*|{}}
  */
 const validateAge = (birthdate) => {
-  /**
-   * Year Difference between Current Date amd Birthdate, eg. 15
-   * @type {number}
-   */
-  const yearDifference = moment(today).diff(birthdate, 'years');
-  if (yearDifference >= MIN_AGE) {
+  if (checkForMinAge(birthdate)) {
     return info('', '', is.VALID);
   }
-  return info('birthdateMinAge', yearDifference, is.INVALID);
+  return info('birthdateMinAge', birthdate, is.INVALID);
 };
+
 
 /**
  * Birthdate Validation
  * @memberof validator
- * @param {string} birthdate - Birthdate as "DD-MM-YYYY"
+ * @param {string} birthdate - Birthdate as YYYY-MM-DD
  * @returns {{message: string, value: string, isValid: boolean}|*|{}}
  */
 export default function validateBirthdate(birthdate) {
   if (!birthdate) {
     return info('birthdateIsRequired', '', is.INVALID);
   }
-
-  if (moment(birthdate, 'DD-MM-YYYY').isValid()) {
+  if (checkDateString(birthdate)) {
     return validateAge(birthdate);
   }
   return info('birthdateIsInvalid', birthdate, is.INVALID);
+}
+
+
+/**
+ * check for min age
+ * @param birthdate
+ * @param minAge
+ * @returns {boolean}
+ */
+function checkForMinAge(birthdate, minAge = 15) {
+  const today = new Date();
+  const inputDate = new Date(birthdate);
+  const diffInDays = dateDiffInDays(inputDate, today);
+  const minDate = new Date();
+  const myYear = minDate.getFullYear() - minAge;
+  minDate.setFullYear(myYear);
+  const minDiffInDays = dateDiffInDays(minDate, today);
+  return diffInDays >= minDiffInDays;
+}
+
+
+/**
+ * returns diff of dates in days
+ * @param a
+ * @param b
+ * @returns {number}
+ */
+function dateDiffInDays(a, b) {
+  const msPerDay = 1000 * 60 * 60 * 24;
+  // Discard the time and time-zone information.
+  const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  return Math.floor((utc2 - utc1) / msPerDay);
+}
+
+
+/**
+ * check if input date string is in correct format e.g. YYYY-MM-DD
+ * @param date
+ * @returns {boolean}
+ */
+function checkDateString(date) {
+  let testDateArray = [];
+  try {
+    testDateArray = date.split('-');
+  } catch (error) {
+    return false;
+  }
+  return testDateArray.length === 3;
 }

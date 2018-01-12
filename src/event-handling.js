@@ -10,12 +10,17 @@ export function eventInit() {
    */
   document.addEventListener('form-validation', async function (e) {
     const inputId = e.detail.currentField.id;
-    const target = document.querySelector(`[for="${inputId}"]`);
+    let targets = document.querySelectorAll(`[for="${inputId}"]`);
+    const form = e.detail.form;
 
-    if (e.detail.isValid) {
-      await removeErrorMessage(target);
+    if (e.detail.currentField.type === 'radio') {
+      targets = form.querySelectorAll(`#${e.detail.currentField.name}`);
+    }
+
+    if (e.detail.fieldIsValid) {
+      await removeErrorMessage(targets);
     } else {
-      await displayErrorMessage(target, e.detail.message, {
+      await displayErrorMessage(targets, e.detail.message, {
         url: 'validation-messages.json',
       });
     }

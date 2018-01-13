@@ -1,8 +1,11 @@
 {
   "presets": [
-    [
-      "es2015"
-    ]
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "ff 43"],
+        "node": "current"
+      }
+    }]
   ],
   "plugins": [
     ["transform-class-properties", { "spec": true }]

@@ -1,15 +1,21 @@
 {
-  "presets": [
-    [
-      "es2015"
-    ]
-  ],
-  "plugins": [
-    ["transform-class-properties", { "spec": true }]
-  ],
   "env": {
+    "es5": {
+      "presets": [
+        "es2015"
+      ]
+    },
+    "es6": {
+      "presets": [
+        "es2016",
+        "stage-3"
+      ]
+    },
     "test": {
       "plugins": ["istanbul"]
     }
-  }
+  },
+  "plugins": [
+    ["transform-class-properties", { "spec": true }]
+  ]
 }

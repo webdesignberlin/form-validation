@@ -1,9 +1,17 @@
 {
   "name": "form-validation-with-rules",
-  "version": "2.6.1",
+  "version": "3.0.0",
   "description": "Form Validation with Rules. Currently no support.",
-  "main": "index.js",
+  "main": "dist-es5/index.js",
+  "browser": "dist-es5/index.js",
+  "module": "dist-es6/index.js",
+  "jsnext:main": "dist-es6/index.js",
   "scripts": {
+    "build": "run-p build:es5 build:es6",
+    "build:es6": "cross-env BABEL_ENV=es6 babel ./src --out-dir ./dist-es6",
+    "build:es5": "cross-env BABEL_ENV=es5 babel ./src --out-dir ./dist-es5",
+    "prepublishOnly": "npm run build",
+    "test-test": "BABEL_ENV=es5 mocha --require babel-core/register",
     "doc": "jsdoc --configure .jsdocrc.json",
     "test:unit": "mocha --require babel-core/register --recursive ./tests/ --silent",
     "test:coverage": "cross-env NODE_ENV=test nyc --all --reporter=text-summary npm run test:unit",
@@ -35,7 +43,17 @@
     "jsdoc": "^3.5.5",
     "mocha": "^4.1.0",
     "moment": "^2.20.1",
-    "nyc": "^11.4.1"
+    "nyc": "^11.4.1",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "npm-run-all": "^4.1.2",
+    "pre-commit": "^1.2.2",
+    "webpack": "^3.8.1",
+    "webpack-bundle-analyzer": "^2.9.1"
   },
   "dependencies": {}
 }

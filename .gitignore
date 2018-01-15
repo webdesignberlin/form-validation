@@ -89,6 +89,10 @@ JSON
 /.docker/**/.env
 docker-compose.yml
 
+dist-es5
+dist-es6
+cjs
+
 ###
 # + Do not ignore
 # ==================================================================

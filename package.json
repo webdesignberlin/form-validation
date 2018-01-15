@@ -1,6 +1,6 @@
 {
   "name": "form-validation-with-rules",
-  "version": "2.7.2",
+  "version": "3.0.0",
   "description": "Form Validation with Rules. Currently no support.",
   "main": "dist-es5/index.js",
   "browser": "dist-es5/index.js",

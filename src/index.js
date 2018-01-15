@@ -115,6 +115,12 @@ export default class Form {
 
     const validatorRule = field.dataset.validator;
     if (validator[validatorRule]) {
+      if (!field.required && field.value.length <= 0) {
+        /**
+         * True Validation for empty Fields they are not required
+         */
+        return true;
+      }
       return validator[validatorRule](field.value).isValid;
     }
 
@@ -146,7 +152,7 @@ export default class Form {
    * @function
    * @memberof Form
    */
-  validate(field, silent = false) {    
+  validate(field, silent = false) {
     if (field.type === 'radio') {
       const elsSameName = this.elForm.querySelectorAll(`[name="${field.name}"]`);
       const elsSameNameChecked = this.elForm.querySelectorAll(`[name="${field.name}"]:checked`);

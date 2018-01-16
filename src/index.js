@@ -98,9 +98,13 @@ export default class Form {
    */
   fieldIsValid(field) {
     prepareCheckbox(field);
-    /*if (field.type === 'radio' && !field.checked) {
-      return false;
-    }*/
+    /**
+     * Fields with Ignore Class (if they were subsequently manipulated in the dom)
+     */
+    if (field.classList.contains(`${this.config.classIgnore}`)) {
+      return true;
+    }
+
     if (field.type === 'radio') {
       const elsSameName = this.elForm.querySelectorAll(`[name="${field.name}"]`);
       const elsSameNameChecked = this.elForm.querySelectorAll(`[name="${field.name}"]:checked`);

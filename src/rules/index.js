@@ -9,17 +9,13 @@ import validatePhone from './validate-phone.js';
 import validateText from './validate-text.js';
 
 /**
- * Validator Object with Validation functions
- * @namespace
- * @type {{firstName: validateName, lastName: validateName,
- * birthdate: validateBirthdate, phone: validatePhone,
- * email: validateEmail, gender: validateGender,
- * uuid: validateUuid, state: validateState}}
- */
+  * Validator Object with Validation functions
+  */
 const validator = {
   isRequired: validateIsRequired,
   firstName: validateName,
   lastName: validateName,
+  name: validateName,
   birthdate: validateBirthdate,
   phone: validatePhone,
   email: validateEmail,

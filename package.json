@@ -1,6 +1,6 @@
 {
   "name": "form-validation-with-rules",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "Form Validation with Rules. Currently no support.",
   "main": "dist-es5/index.js",
   "browser": "dist-es5/index.js",
@@ -11,9 +11,8 @@
     "build:es6": "cross-env BABEL_ENV=es6 babel ./src --out-dir ./dist-es6",
     "build:es5": "cross-env BABEL_ENV=es5 babel ./src --out-dir ./dist-es5",
     "prepublishOnly": "npm run build",
-    "test-test": "BABEL_ENV=es5 mocha --require babel-core/register",
     "doc": "jsdoc --configure .jsdocrc.json",
-    "test:unit": "mocha --require babel-core/register --recursive ./tests/ --silent",
+    "test:unit": "BABEL_ENV=test mocha --require babel-core/register --recursive ./tests/ --silent",
     "test:coverage": "cross-env NODE_ENV=test nyc --all --reporter=text-summary npm run test:unit",
     "posttest:coverage": "nyc report --reporter=lcov"
   },

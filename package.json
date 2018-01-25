@@ -12,7 +12,7 @@
     "build:es5": "cross-env BABEL_ENV=es5 babel ./src --out-dir ./dist-es5",
     "prepublishOnly": "npm run build",
     "doc": "jsdoc --configure .jsdocrc.json",
-    "test:unit": "BABEL_ENV=test mocha --require babel-core/register --recursive ./tests/ --silent",
+    "test:unit": "cross-env BABEL_ENV=test mocha --require babel-core/register --recursive ./tests/ --silent",
     "test:coverage": "cross-env NODE_ENV=test nyc --all --reporter=text-summary npm run test:unit",
     "posttest:coverage": "nyc report --reporter=lcov"
   },

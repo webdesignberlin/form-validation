@@ -6,6 +6,7 @@ import validateUuid from './validate-uuid.js';
 import validateState from './validate-state.js';
 import validateBirthdate from './validate-birthdate.js';
 import validatePhone from './validate-phone.js';
+import validateText from './validate-text.js';
 
 /**
  * Validator Object with Validation functions
@@ -25,6 +26,7 @@ const validator = {
   gender: validateGender,
   uuid: validateUuid,
   state: validateState,
+  text: validateText,
 };
 
 export default validator;

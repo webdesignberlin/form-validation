@@ -13,5 +13,7 @@
   "emailIsRequired": "Pflichtfeld",
   "emailWrongPattern": "Bitte gib eine gültige E-Mail-Adresse an.",
   "phoneIsRequired": "Pflichtfeld",
-  "phoneWrongPattern": "Bitte gib eine gültige Teefonnummer an."
+  "phoneWrongPattern": "Bitte gib eine gültige Teefonnummer an.",
+  "textIsRequired": "Pflichtfeld",
+  "maxTextLengthExceeded": "Der eingegebene Text ist zu lang."
 }

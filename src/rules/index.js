@@ -7,6 +7,7 @@ import validateState from './validate-state.js';
 import validateBirthdate from './validate-birthdate.js';
 import validatePhone from './validate-phone.js';
 import validateText from './validate-text.js';
+import validateFriendsCount from './validate-friends-count.js';
 
 /**
   * Validator Object with Validation functions
@@ -22,6 +23,7 @@ const validator = {
   gender: validateGender,
   uuid: validateUuid,
   state: validateState,
+  friendsCount: validateFriendsCount,
   text: validateText,
 };
 

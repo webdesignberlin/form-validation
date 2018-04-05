@@ -9,6 +9,7 @@ import validatePhone from './validate-phone.js';
 import validateText from './validate-text.js';
 import validatePassword from './validate-password';
 import validateIban from './validate-iban';
+import validateAddress from './validate-address';
 
 /**
   * Validator Object with Validation functions
@@ -27,6 +28,7 @@ const validator = {
   text: validateText,
   password: validatePassword,
   iban: validateIban,
+  address: validateAddress,
 };
 
 export default validator;

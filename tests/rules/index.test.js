@@ -9,6 +9,7 @@ import validateState from '../../src/rules/validate-state';
 import validateBirthdate from '../../src/rules/validate-birthdate';
 import validatePhone from '../../src/rules/validate-phone';
 import validateText from '../../src/rules/validate-text';
+import validatePassword from '../../src/rules/validate-password';
 
 const mockObject = {
   isRequired: validateIsRequired,
@@ -22,6 +23,7 @@ const mockObject = {
   uuid: validateUuid,
   state: validateState,
   text: validateText,
+  password: validatePassword,
 };
 
 describe('Validator Object', () => {

@@ -8,6 +8,7 @@ import validateBirthdate from './validate-birthdate.js';
 import validatePhone from './validate-phone.js';
 import validateText from './validate-text.js';
 import validatePassword from './validate-password';
+import validateIban from './validate-iban';
 
 /**
   * Validator Object with Validation functions
@@ -25,6 +26,7 @@ const validator = {
   state: validateState,
   text: validateText,
   password: validatePassword,
+  iban: validateIban,
 };
 
 export default validator;

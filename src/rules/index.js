@@ -10,6 +10,7 @@ import validateText from './validate-text.js';
 import validatePassword from './validate-password';
 import validateIban from './validate-iban';
 import validateAddress from './validate-address';
+import validateAddressAutoComplete from './validate-address-autocomplete';
 
 /**
   * Validator Object with Validation functions
@@ -29,6 +30,7 @@ const validator = {
   password: validatePassword,
   iban: validateIban,
   address: validateAddress,
+  addressAutoComplete: validateAddressAutoComplete,
 };
 
 export default validator;

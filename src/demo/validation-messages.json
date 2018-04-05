@@ -20,5 +20,7 @@
   "ibanWrongPattern": "Ungültige IBAN",
   "ibanWrongChecksum": "Ungültiges IBAN Format",
   "addressIsRequired": "Pflichtfeld",
-  "addressLengthIsIncorrect": "Ungültige Adresse"
+  "addressLengthIsIncorrect": "Ungültige Adresse",
+  "addressIsRequired": "Pflichtfeld",
+  "addressMissingStreetNumber": "Bitte Hausnummer angeben."
 }

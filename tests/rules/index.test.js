@@ -12,6 +12,7 @@ import validateText from '../../src/rules/validate-text';
 import validatePassword from '../../src/rules/validate-password';
 import validateIban from '../../src/rules/validate-iban';
 import validateAddress from '../../src/rules/validate-address';
+import validateAddressAutoComplete from '../../src/rules/validate-address-autocomplete';
 
 const mockObject = {
   isRequired: validateIsRequired,
@@ -28,6 +29,7 @@ const mockObject = {
   password: validatePassword,
   iban: validateIban,
   address: validateAddress,
+  addressAutoComplete: validateAddressAutoComplete,
 };
 
 describe('Validator Object', () => {

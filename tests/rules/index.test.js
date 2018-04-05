@@ -14,6 +14,7 @@ const mockObject = {
   isRequired: validateIsRequired,
   firstName: validateName,
   lastName: validateName,
+  name: validateName,
   birthdate: validateBirthdate,
   phone: validatePhone,
   email: validateEmail,

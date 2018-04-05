@@ -11,6 +11,7 @@ import validatePhone from '../../src/rules/validate-phone';
 import validateText from '../../src/rules/validate-text';
 import validatePassword from '../../src/rules/validate-password';
 import validateIban from '../../src/rules/validate-iban';
+import validateAddress from '../../src/rules/validate-address';
 
 const mockObject = {
   isRequired: validateIsRequired,
@@ -26,6 +27,7 @@ const mockObject = {
   text: validateText,
   password: validatePassword,
   iban: validateIban,
+  address: validateAddress,
 };
 
 describe('Validator Object', () => {

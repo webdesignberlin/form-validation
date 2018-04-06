@@ -1,6 +1,6 @@
 {
   "name": "form-validation-with-rules",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "description": "Form Validation with Rules. Currently no support.",
   "main": "dist-es5/index.js",
   "browser": "dist-es5/index.js",
@@ -46,6 +46,7 @@
     "eslint-plugin-import": "^2.8.0",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.5.5",
+    "jsdom": "^11.7.0",
     "mocha": "^5.0.0",
     "moment": "^2.20.1",
     "npm-run-all": "^4.1.2",

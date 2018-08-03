@@ -14,6 +14,7 @@ import validateIban from '../../src/rules/validate-iban';
 import validateAddress from '../../src/rules/validate-address';
 import validateAddressAutoComplete from '../../src/rules/validate-address-autocomplete';
 import validateAddressZip from '../../src/rules/validate-address-zip';
+import validateFriendsCount from '../../src/rules/validate-friends-count';
 
 const mockObject = {
   isRequired: validateIsRequired,
@@ -32,6 +33,7 @@ const mockObject = {
   address: validateAddress,
   addressAutoComplete: validateAddressAutoComplete,
   zip: validateAddressZip,
+  friendsCount: validateFriendsCount,
 };
 
 describe('Validator Object', () => {

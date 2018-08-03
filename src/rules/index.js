@@ -8,6 +8,11 @@ import validateBirthdate from './validate-birthdate.js';
 import validatePhone from './validate-phone.js';
 import validateText from './validate-text.js';
 import validateFriendsCount from './validate-friends-count.js';
+import validatePassword from './validate-password';
+import validateIban from './validate-iban';
+import validateAddress from './validate-address';
+import validateAddressAutoComplete from './validate-address-autocomplete';
+import validateAddressZip from './validate-address-zip';
 
 /**
   * Validator Object with Validation functions
@@ -25,6 +30,11 @@ const validator = {
   state: validateState,
   friendsCount: validateFriendsCount,
   text: validateText,
+  password: validatePassword,
+  iban: validateIban,
+  address: validateAddress,
+  addressAutoComplete: validateAddressAutoComplete,
+  zip: validateAddressZip,
 };
 
 export default validator;

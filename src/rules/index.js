@@ -13,6 +13,7 @@ import validateIban from './validate-iban';
 import validateAddress from './validate-address';
 import validateAddressAutoComplete from './validate-address-autocomplete';
 import validateAddressZip from './validate-address-zip';
+import validateAddressFirstLine from './validate-address-first-line';
 
 /**
   * Validator Object with Validation functions
@@ -34,6 +35,7 @@ const validator = {
   iban: validateIban,
   address: validateAddress,
   addressAutoComplete: validateAddressAutoComplete,
+  addressFirstLine: validateAddressFirstLine,
   zip: validateAddressZip,
 };
 

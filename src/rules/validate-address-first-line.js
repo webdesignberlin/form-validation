@@ -23,5 +23,5 @@ export default function validateAddressFirstLine(name) {
     return info('', '', is.VALID);
   }
 
-  return info('', '', is.INVALID);
+  return info('addressFirstLineWrongPattern', '', is.INVALID);
 }

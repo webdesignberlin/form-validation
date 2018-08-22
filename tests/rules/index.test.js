@@ -16,6 +16,7 @@ import validateAddressAutoComplete from '../../src/rules/validate-address-autoco
 import validateAddressZip from '../../src/rules/validate-address-zip';
 import validateFriendsCount from '../../src/rules/validate-friends-count';
 import validateAddressFirstLine from '../../src/rules/validate-address-first-line';
+import validateAddressStreetNumber from '../../src/rules/validate-address-streetnumber';
 
 const mockObject = {
   isRequired: validateIsRequired,
@@ -34,6 +35,7 @@ const mockObject = {
   address: validateAddress,
   addressAutoComplete: validateAddressAutoComplete,
   addressFirstLine: validateAddressFirstLine,
+  addressStreetNumber: validateAddressStreetNumber,
   zip: validateAddressZip,
   friendsCount: validateFriendsCount,
 };

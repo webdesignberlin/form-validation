@@ -14,6 +14,7 @@ import validateAddress from './validate-address';
 import validateAddressAutoComplete from './validate-address-autocomplete';
 import validateAddressZip from './validate-address-zip';
 import validateAddressFirstLine from './validate-address-first-line';
+import validateAddressStreetNumber from './validate-address-streetnumber';
 
 /**
   * Validator Object with Validation functions
@@ -36,6 +37,7 @@ const validator = {
   address: validateAddress,
   addressAutoComplete: validateAddressAutoComplete,
   addressFirstLine: validateAddressFirstLine,
+  addressStreetNumber: validateAddressStreetNumber,
   zip: validateAddressZip,
 };
 

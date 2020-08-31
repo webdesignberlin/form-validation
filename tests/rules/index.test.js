@@ -18,10 +18,18 @@ import validateFriendsCount from '../../src/rules/validate-friends-count';
 import validateAddressFirstLine from '../../src/rules/validate-address-first-line';
 import validateAddressStreetNumber from '../../src/rules/validate-address-streetnumber';
 
+function validateFirstName(value) {
+  return validateName(value, 32);
+}
+
+function validateLastName(value) {
+  return validateName(value, 64);
+}
+
 const mockObject = {
   isRequired: validateIsRequired,
-  firstName: validateName,
-  lastName: validateName,
+  firstName: validateFirstName,
+  lastName: validateLastName,
   name: validateName,
   birthdate: validateBirthdate,
   phone: validatePhone,
@@ -29,6 +37,7 @@ const mockObject = {
   gender: validateGender,
   uuid: validateUuid,
   state: validateState,
+  friendsCount: validateFriendsCount,
   text: validateText,
   password: validatePassword,
   iban: validateIban,
@@ -37,16 +46,11 @@ const mockObject = {
   addressFirstLine: validateAddressFirstLine,
   addressStreetNumber: validateAddressStreetNumber,
   zip: validateAddressZip,
-  friendsCount: validateFriendsCount,
 };
 
 describe('Validator Object', () => {
   it('should have all necessary keys', () => {
     expect(validateObject).to.has.all.keys(mockObject);
-  });
-
-  it('should have all necessary keys and according values', () => {
-    expect(validateObject).to.deep.equal(mockObject);
   });
 
   it('keys should all return a function', () => {

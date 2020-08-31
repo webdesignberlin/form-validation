@@ -21,4 +21,14 @@ describe('Name Validation', () => {
     const result = validate('');
     expect(result.isValid).to.be.false;
   });
+
+  it('should return false for a name mith max length', () => {
+    const result = validate('John', 3);
+    expect(result.isValid).to.be.false;
+  });
+
+  it('should return true for a name mith max length not reached', () => {
+    const result = validate('John', 4);
+    expect(result.isValid).to.be.true;
+  });
 });

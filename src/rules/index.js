@@ -16,13 +16,21 @@ import validateAddressZip from './validate-address-zip';
 import validateAddressFirstLine from './validate-address-first-line';
 import validateAddressStreetNumber from './validate-address-streetnumber';
 
+function validateFirstName(value) {
+  return validateName(value, 32);
+}
+
+function validateLastName(value) {
+  return validateName(value, 64);
+}
+
 /**
   * Validator Object with Validation functions
   */
 const validator = {
   isRequired: validateIsRequired,
-  firstName: validateName,
-  lastName: validateName,
+  firstName: validateFirstName,
+  lastName: validateLastName,
   name: validateName,
   birthdate: validateBirthdate,
   phone: validatePhone,

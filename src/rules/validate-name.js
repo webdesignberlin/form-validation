@@ -7,13 +7,17 @@ import is from './valid-object.js';
  * @param {string} name - First Name or Last Name
  * @returns {{message: string, value: string, isValid: boolean}|*|{}}
  */
-export default function validateName(name) {
+export default function validateName(name, max) {
   if (!name) {
     return info('nameIsRequired', '', is.INVALID);
   }
 
   if (name.length !== name.trim().length) {
     return info('nameLengthIsIncorrect', name, is.INVALID);
+  }
+
+  if (name.length > max) {
+    return info('nameMaxLengthIsIncorrect', max, is.INVALID);
   }
 
   const matches = name.match(/^((?!^-)(?!\s\s)[a-zA-Z\u00C0-\u024F\- ](?!-{2})(?!-$)){1,255}$/);
